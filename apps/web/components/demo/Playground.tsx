@@ -111,7 +111,7 @@ export function Playground() {
             </span>
             <p className="text-[13.5px] font-semibold text-ink">FlowAIOS Concierge</p>
             <span className="font-mono text-[10px] uppercase tracking-widest text-mute">
-              Live · Gemini 2.5 Flash
+              Online
             </span>
           </div>
           <span className="font-mono text-[10px] uppercase tracking-widest text-mute">

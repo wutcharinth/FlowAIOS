@@ -22,35 +22,33 @@ export default function CustomerOpsLanding() {
           title: 'Tool เก่าตอบไม่ได้ ·ทีมตอบเอง',
           quote:
             'Zaapi เป็นแค่ viewer ·agent ของฉันยังพิมพ์เองทุกข้อความ. SLA เราเข้าเป้า แต่คนของฉันลาออก 2 คนใน 3 เดือน. หัวจะระเบิด.',
-          persona: 'Pim · CS Manager (35 staff fashion)',
+          persona: 'CS Manager · Fashion (35 staff)',
         },
         {
           title: 'Escalation context หาย',
           quote:
             'พอ agent escalate มาที่ฉัน ·กว่าจะหาเคสใน Zaapi เจอ context หายไปครึ่งนึงแล้ว. เคสด่วนเสีย customer trust ก่อนทีมจะเข้าถึงด้วยซ้ำ.',
-          persona: 'Pim · CS Manager (35 staff fashion)',
+          persona: 'CS Manager · Fashion (35 staff)',
         },
         {
           title: 'COO ต้องเห็นว่าคุ้ม',
           quote:
-            'ถ้าจะเปลี่ยนเครื่องมือ ฉันต้อง show ว่า handle time ลด ≥30% ไม่งั้น Khun Anucha ไม่อนุมัติ. ต้องเป็น measurable ภายใน 30 วัน.',
-          persona: 'Pim · CS Manager (35 staff fashion)',
+            'ถ้าจะเปลี่ยนเครื่องมือ ฉันต้อง show ว่า handle time ลด ≥30% ไม่งั้นผู้บริหารไม่อนุมัติ. ต้องเป็น measurable ภายใน 30 วัน.',
+          persona: 'CS Manager · Fashion (35 staff)',
         },
       ]}
       features={[
         {
           title: 'Confidence-gated auto-reply',
-          tag: 'Strongest signal in study',
           body: 'AI replies on >90% confidence, drafts on 70-90%, escalates on <70%. ทีมคุณยังเป็นคนตัดสินใจ ·แต่ไม่ต้องพิมพ์ตั้งแต่ศูนย์. Handle time ลดเฉลี่ย 32% ใน pilot.',
         },
         {
           title: 'Knowledge Base + Auto-Lessons',
-          tag: 'Top-rated planned feature',
           body: 'AI เห็นทีมแก้ draft ของมันยังไง ·แล้วเสนอเป็น lesson ให้คุณ approve. กลายเป็น rule ที่ AI ใช้ในเคสคล้ายกัน. ทีมไม่ต้องสอน AI ซ้ำ ·มันสังเกตเอง.',
         },
         {
           title: 'Intelligence Dashboard',
-          tag: 'Coming with M1.5',
+          tag: 'On the roadmap',
           body: 'รู้ว่าคำถามอะไรซ้ำ, sentiment ตกตอนไหน, ทีมไหนรับโหลดเกิน. "Automate next" widget เสนอ rule candidate ให้ approve ·ไม่ต้องเดา.',
         },
       ]}

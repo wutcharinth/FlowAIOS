@@ -6,7 +6,7 @@ import { PricingTiers } from '@/components/marketing/PricingTiers';
 export const metadata = {
   title: 'FlowAIOS Pricing · 4 tiers from ฿990 to enterprise',
   description:
-    'Self-serve Starter and Growth, Pro pilot, Enterprise with PDPA + DPA. Pricing derived from 8-persona Thai market study.',
+    'Self-serve Starter and Growth, Pro pilot, Enterprise with PDPA + DPA. Built for Thai-market scale.',
 };
 
 export default function PricingPage() {
@@ -30,8 +30,8 @@ export default function PricingPage() {
               ไม่ใช่ตาม seat count
             </h1>
             <p className="lead mx-auto mt-5 max-w-xl">
-              4 tiers เริ่มต้น ฿990/เดือน — มาจากการสัมภาษณ์ผู้ซื้อจริง 8 segment ในตลาดไทย.
-              Self-serve trial 14 วัน on Starter & Growth. Pro & Enterprise ผ่าน pilot.
+              4 tiers เริ่มต้น ฿990/เดือน. Self-serve trial 14 วัน on Starter & Growth.
+              Pro & Enterprise ผ่าน pilot.
             </p>
           </div>
         </section>

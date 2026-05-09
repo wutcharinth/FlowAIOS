@@ -22,25 +22,24 @@ export default function CommerceLanding() {
           title: 'Tab toggling ทั้งวัน',
           quote:
             'ทุกเช้าพี่เปิด LINE OA, Shopee Centre, TikTok Shop และ Sheet พร้อมกัน 4 tab. 11 โมงตอบคำถามเดิมไปยี่สิบครั้งใน 3 หน้าจอ ·ลูกค้าคนเดียวกันด้วย เพราะรอตอบที่แรกไม่ไหว.',
-          persona: 'Nat · DTC Beauty (Bangkok)',
+          persona: 'DTC beauty owner · Bangkok',
         },
         {
           title: 'Manychat ตอบไม่ได้นอก script',
           quote:
             'พอลูกค้าถามนอก flow มันก็โยนกลับมาว่า "รอ admin ตอบนะคะ" ·รอ 40 นาที. SLA เราคือ 5 นาที. หลังเลิกงานนี่เราเสีย order ทุกวัน.',
-          persona: 'Nat · DTC Beauty (Bangkok)',
+          persona: 'DTC beauty owner · Bangkok',
         },
         {
           title: 'Wholesale ที่ Sheet ไม่รู้',
           quote:
             'มีลูกค้าทักมาขอซื้อส่ง 50 ชิ้น ไม่ได้ตามใน Sheet. กว่าจะตอบราคาที่ถูกต้องได้ ลูกค้าหายไปแล้ว.',
-          persona: 'อรวรรณ · ecom mid-tier',
+          persona: 'Ecom owner · mid-tier',
         },
       ]}
       features={[
         {
           title: 'Confidence-gated auto-reply',
-          tag: 'Validated 8/8 personas',
           body: 'AI ตอบเองเมื่อมั่นใจ >90%. ส่งดราฟต์ให้ approve เมื่อ 70-90%. ส่งต่อคนทันทีเมื่อต่ำกว่านั้น. คุณกำหนด threshold ได้ ·และเห็น confidence ของทุก reply.',
         },
         {
@@ -50,7 +49,7 @@ export default function CommerceLanding() {
         },
         {
           title: 'Order lookup teaser',
-          tag: 'M1.6 (Shipnity + Shopee)',
+          tag: 'On the roadmap',
           body: 'AI เช็ค tracking, สถานะ order, สต็อก SKU จากระบบหลังบ้านเอง ·แล้วตอบลูกค้าได้ทันที. ลด tab toggle เกือบหมด.',
         },
       ]}

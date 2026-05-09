@@ -80,7 +80,7 @@ const SCENES: Thread[][] = [
     {
       sender: 'Returning buyer',
       channel: 'tiktok',
-      body: 'VIP discount code, auto-rule R-008 candidate, 31 hits/30d',
+      body: 'VIP discount code, recurring question, auto-rule candidate',
       tag: 'Growth',
     },
   ],

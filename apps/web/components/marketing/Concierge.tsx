@@ -52,7 +52,7 @@ export function Concierge() {
         {
           direction: 'out',
           body:
-            'สวัสดีค่ะ I\'m the FlowAIOS concierge. Ask me anything about pricing, channels, confidence-gated AI, or what ships in M1.5. ตอบไทยหรือ English ได้นะคะ. Tap "Contact team" if you want a human reply instead.',
+            'สวัสดีค่ะ I\'m the FlowAIOS concierge. Ask me anything about pricing, channels, or how confidence-gated AI works. ตอบไทยหรือ English ได้นะคะ. Tap "Contact team" if you want a human reply instead.',
         },
       ]);
       // Hydrate any prior thread for this visitor.
@@ -217,9 +217,7 @@ export function Concierge() {
             <div>
               <p className="text-[13.5px] font-semibold text-ink">FlowAIOS Concierge</p>
               <p className="font-mono text-[10px] uppercase tracking-widest text-mute">
-                {handed
-                  ? 'handed off · team replying'
-                  : 'Live · Gemini 2.5 Flash'}
+                {handed ? 'handed off · team replying' : 'Online'}
               </p>
             </div>
           </div>

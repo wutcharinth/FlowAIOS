@@ -76,9 +76,9 @@ export default function DemoPage() {
               Now ask <em className="not-italic font-semibold text-warm">your</em> question
             </h2>
             <p className="lead mt-4 max-w-[58ch]">
-              The walkthrough above is scripted. The chat below is the same Gemini-backed
-              concierge running on every page. Ask about pricing, channels, PDPA, the M1.5
-              roadmap, or anything else.
+              The walkthrough above is scripted. The chat below is the same concierge running
+              on every page. Ask about pricing, channels, PDPA, what&rsquo;s coming next, or
+              anything else.
             </p>
             <div className="mt-10">
               <Playground />
@@ -106,7 +106,7 @@ export default function DemoPage() {
                 href="/for/customer-ops"
               />
               <ExploreCard
-                kicker="Intelligence · M1.5"
+                kicker="Intelligence · coming"
                 title="Recurring questions become rules"
                 body="The Configuration Advisor watches what your team edits and proposes auto-rules with confidence + sample matches. Approve once, applies forever."
                 href="/for/customer-ops#features"
@@ -118,7 +118,7 @@ export default function DemoPage() {
                 href="/for/commerce"
               />
               <ExploreCard
-                kicker="PDPA control plane · M1.5"
+                kicker="PDPA control plane · coming"
                 title="Audit log, residency, retention, fact-approval queue"
                 body="Built for the buyer who needs to clear an internal risk review. TH or SG residency, signed DPA template, exportable audit."
                 href="/for/customer-ops#features"

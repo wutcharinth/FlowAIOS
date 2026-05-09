@@ -22,19 +22,19 @@ export default function ServicesLanding() {
           title: 'Manychat รุนแรงเกินไป',
           quote:
             'Lead ใหม่ vs ผู้ปกครองเก่า ·สอง flow ต่างกันมาก. Manychat tree rigid ·พอ parent ถามนอก flow มันก็พัง. แล้วของฉันอยู่ใน Sheet หมด, มันไม่อ่าน.',
-          persona: 'Win · Marketing Manager (tutoring)',
+          persona: 'Marketing Manager · Tutoring',
         },
         {
           title: 'After-hours conversion ตก',
           quote:
             'หลัง 8 ทุ่มเรา convert 14% เทียบกับเช้า 33%. Lead เสีย ฿180–280 ต่อ click ·เราเสียเงินไปเปล่า.',
-          persona: 'Dr. Pong · Clinic chain (5 branches)',
+          persona: 'Clinic chain · 5 branches',
         },
         {
           title: 'Clinical vs non-clinical',
           quote:
             'AI ตอบเรื่องราคาดี ·แต่ห้ามตอบเรื่อง diagnosis. ถ้าตอบผิดเรามีปัญหากับ medical practitioner act. ระบบเก่าไม่รู้จัก boundary.',
-          persona: 'Dr. Pong · Clinic chain (5 branches)',
+          persona: 'Clinic chain · 5 branches',
         },
       ]}
       features={[

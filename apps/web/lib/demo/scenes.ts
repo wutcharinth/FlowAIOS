@@ -49,7 +49,7 @@ export const SCENES: Scene[] = [
       {
         from: 'ai',
         body:
-          'สวัสดีค่ะคุณพิมพ์ลภัส 🌿 พัสดุของคุณ Order #3401 ส่งจาก Kerry แล้วเมื่อวานนี้ค่ะ\nคาดว่าถึงพรุ่งนี้ก่อนเที่ยง · เลข tracking: EC123456789TH',
+          'สวัสดีค่ะคุณพิมพ์ลภัส พัสดุของคุณ Order #3401 ส่งจาก Kerry แล้วเมื่อวานนี้ค่ะ\nคาดว่าถึงพรุ่งนี้ก่อนเที่ยง · เลข tracking: EC123456789TH',
         trace: {
           confidence: 0.94,
           tier: 'auto',
@@ -62,7 +62,7 @@ export const SCENES: Scene[] = [
       {
         from: 'ai',
         body:
-          'ได้ค่ะ 😊 Kerry รองรับการเซ็นรับแทนของผู้ที่อยู่ในบริเวณเดียวกัน\nหรือถ้าสะดวก สามารถนัดส่งซ้ำผ่าน Kerry app · พิมพ์เลข tracking ด้านบนได้เลยค่ะ',
+          'ได้ค่ะ Kerry รองรับการเซ็นรับแทนของผู้ที่อยู่ในบริเวณเดียวกัน\nหรือถ้าสะดวก สามารถนัดส่งซ้ำผ่าน Kerry app · พิมพ์เลข tracking ด้านบนได้เลยค่ะ',
         trace: {
           confidence: 0.91,
           tier: 'auto',
@@ -71,11 +71,11 @@ export const SCENES: Scene[] = [
           sources: ['kb · Kerry delivery options', 'kb · neighbor signature policy'],
         },
       },
-      { from: 'customer', body: 'โอเคเลยค่ะ ขอบคุณนะคะ ☺️' },
+      { from: 'customer', body: 'โอเคเลยค่ะ ขอบคุณนะคะ' },
       {
         from: 'ai',
         body:
-          'ยินดีค่ะคุณพิมพ์ลภัส · มีอะไรเพิ่มเติมแจ้งได้ตลอดนะคะ 💚',
+          'ยินดีค่ะคุณพิมพ์ลภัส · มีอะไรเพิ่มเติมแจ้งได้ตลอดนะคะ',
         trace: {
           confidence: 0.96,
           tier: 'auto',
@@ -99,7 +99,7 @@ export const SCENES: Scene[] = [
       {
         from: 'ai',
         body:
-          '⏸ Drafted for review · holding for agent approval\n\n"Hi Lin! Thanks for reaching out 🙏 For 50+ pcs wholesale we offer 28% off retail. Could you share the SKU and your preferred colorway? I\'ll confirm stock and send a quote with shipping options to SG."',
+          'Drafted for review · holding for agent approval\n\n"Hi Lin! Thanks for reaching out. For 50+ pcs wholesale we offer 28% off retail. Could you share the SKU and your preferred colorway? I\'ll confirm stock and send a quote with shipping options to SG."',
         trace: {
           confidence: 0.71,
           tier: 'approval',
@@ -108,7 +108,7 @@ export const SCENES: Scene[] = [
           sources: ['lesson · wholesale verify SKU first', 'rule R-013 · cross-border quote'],
         },
       },
-      { from: 'agent', body: '✓ Approved & sent (Pim · 12:42)' },
+      { from: 'agent', body: 'Approved & sent (Pim · 12:42)' },
       {
         from: 'customer',
         body: 'SKU is LC-2024-OAT in size M. I need them by end of June. Stock ok?',
@@ -116,7 +116,7 @@ export const SCENES: Scene[] = [
       {
         from: 'ai',
         body:
-          'พร้อมค่ะ 👍 LC-2024-OAT ในไซส์ M เหลืออยู่ 67 ตัวค่ะ\n\nQuote 50 ชิ้น × ฿420 (after 28% wholesale) = ฿21,000\nShipping to SG: DHL ~฿850 · ETA 4–6 days\n\nต้องการ proforma invoice ส่งไปที่อีเมลไหนคะ?',
+          'พร้อมค่ะ LC-2024-OAT ในไซส์ M เหลืออยู่ 67 ตัวค่ะ\n\nQuote 50 ชิ้น × ฿420 (after 28% wholesale) = ฿21,000\nShipping to SG: DHL ~฿850 · ETA 4–6 days\n\nต้องการ proforma invoice ส่งไปที่อีเมลไหนคะ?',
         trace: {
           confidence: 0.88,
           tier: 'auto',
@@ -140,7 +140,7 @@ export const SCENES: Scene[] = [
       {
         from: 'ai',
         body:
-          '⚠️ Escalating to senior queue · sending brief acknowledgment\n\n"ขออภัยมากค่ะคุณ ดิฉันส่งต่อให้หัวหน้าทีมดูแลทันทีค่ะ จะติดต่อกลับภายใน 15 นาที พร้อมข้อมูลที่ตรวจสอบแล้ว 🙏"',
+          'Escalating to senior queue · sending brief acknowledgment\n\n"ขออภัยมากค่ะคุณ ดิฉันส่งต่อให้หัวหน้าทีมดูแลทันทีค่ะ จะติดต่อกลับภายใน 15 นาที พร้อมข้อมูลที่ตรวจสอบแล้ว"',
         trace: {
           confidence: 0.31,
           tier: 'escalate',
@@ -159,7 +159,7 @@ export const SCENES: Scene[] = [
       {
         from: 'agent',
         body:
-          'รับทราบค่ะคุณสมชาย ดิฉันจัดส่งใหม่ Express ให้ทันที 📦\nเลข tracking ใหม่จะส่งให้ภายใน 1 ชม. และ voucher ฿500 ขอโทษเป็นเสริมให้ด้วยค่ะ ขอบคุณที่ให้โอกาสปรับปรุงนะคะ 🙏',
+          'รับทราบค่ะคุณสมชาย ดิฉันจัดส่งใหม่ Express ให้ทันที\nเลข tracking ใหม่จะส่งให้ภายใน 1 ชม. และ voucher ฿500 ขอโทษเป็นเสริมให้ด้วยค่ะ ขอบคุณที่ให้โอกาสปรับปรุงนะคะ',
       },
       { from: 'customer', body: 'ขอบคุณค่ะ จริงใจมาก' },
     ],
@@ -175,7 +175,7 @@ export const SCENES: Scene[] = [
       {
         from: 'ai',
         body:
-          'มีค่ะคุณอรวรรณ 🌿\n\nKlin Skin Cleansing Balm v2 (paraben-free, fragrance-free) เพิ่งเปิดตัวสัปดาห์นี้ค่ะ\nราคา ฿890 · ส่ง Kerry ตามปกติ · เนื้อนุ่มกว่าเดิม คงสูตร paraben-free ไว้ตามที่คุณเคยแจ้งค่ะ',
+          'มีค่ะคุณอรวรรณ\n\nKlin Skin Cleansing Balm v2 (paraben-free, fragrance-free) เพิ่งเปิดตัวสัปดาห์นี้ค่ะ\nราคา ฿890 · ส่ง Kerry ตามปกติ · เนื้อนุ่มกว่าเดิม คงสูตร paraben-free ไว้ตามที่คุณเคยแจ้งค่ะ',
         trace: {
           confidence: 0.92,
           tier: 'auto',
@@ -188,7 +188,7 @@ export const SCENES: Scene[] = [
       {
         from: 'ai',
         body:
-          'ได้ค่ะ ✨ Cleansing balm นี้ไม่มีกรดและน้ำหอม ใช้คู่กับ retinol topical ได้เลย\n\nแนะนำว่าหลังล้างให้บำรุง moisturizer ก่อนใช้ retinol นะคะ และเลี่ยง vitamin C ในเช้าเดียวกันถ้าใหม่ต่อ retinol ค่ะ',
+          'ได้ค่ะ Cleansing balm นี้ไม่มีกรดและน้ำหอม ใช้คู่กับ retinol topical ได้เลย\n\nแนะนำว่าหลังล้างให้บำรุง moisturizer ก่อนใช้ retinol นะคะ และเลี่ยง vitamin C ในเช้าเดียวกันถ้าใหม่ต่อ retinol ค่ะ',
         trace: {
           confidence: 0.86,
           tier: 'auto',
@@ -201,7 +201,7 @@ export const SCENES: Scene[] = [
       {
         from: 'ai',
         body:
-          'มีค่ะ! Travel size 30g ราคา ฿320 · เพิ่งเข้ามาในไลน์เดือนนี้\nเก็บไว้ใน cart ของคุณแล้วค่ะ 🎁 ใช้โค้ด REPEAT15 ลด 15% สำหรับลูกค้าซื้อซ้ำได้นะคะ',
+          'มีค่ะ! Travel size 30g ราคา ฿320 · เพิ่งเข้ามาในไลน์เดือนนี้\nเก็บไว้ใน cart ของคุณแล้วค่ะ ใช้โค้ด REPEAT15 ลด 15% สำหรับลูกค้าซื้อซ้ำได้นะคะ',
         trace: {
           confidence: 0.95,
           tier: 'auto',
@@ -210,7 +210,7 @@ export const SCENES: Scene[] = [
           sources: ['rule R-019 · returning loyalty discount', 'oms · travel-size SKU'],
         },
       },
-      { from: 'customer', body: 'ขอบคุณค่ะ น่ารักมาก ☺️' },
+      { from: 'customer', body: 'ขอบคุณค่ะ น่ารักมาก' },
     ],
   },
   {
@@ -224,7 +224,7 @@ export const SCENES: Scene[] = [
       {
         from: 'ai',
         body:
-          'มีค่ะ! 🎉 สำหรับสมาชิก VIP เดือนนี้:\n\nVIP-MAY · ลด 15% ขั้นต่ำ ฿1,200\nใช้ได้ถึงสิ้นเดือน · ใช้ได้ทุก SKU ยกเว้น collab limited',
+          'มีค่ะ! สำหรับสมาชิก VIP เดือนนี้:\n\nVIP-MAY · ลด 15% ขั้นต่ำ ฿1,200\nใช้ได้ถึงสิ้นเดือน · ใช้ได้ทุก SKU ยกเว้น collab limited',
         trace: {
           confidence: 0.91,
           tier: 'auto',
@@ -237,7 +237,7 @@ export const SCENES: Scene[] = [
       {
         from: 'ai',
         body:
-          'ใช้ได้ค่ะ 💜 ทั้ง stream ปกติและ flash ของ Live tonight ใช้โค้ดได้เลย\nกด apply VIP-MAY ตอน checkout · ระบบจะหักให้อัตโนมัติค่ะ',
+          'ใช้ได้ค่ะ ทั้ง stream ปกติและ flash ของ Live tonight ใช้โค้ดได้เลย\nกด apply VIP-MAY ตอน checkout · ระบบจะหักให้อัตโนมัติค่ะ',
         trace: {
           confidence: 0.89,
           tier: 'auto',
@@ -246,12 +246,12 @@ export const SCENES: Scene[] = [
           sources: ['kb · TikTok Live coupon policy'],
         },
       },
-      { from: 'agent', body: '🔔 Advisor · "VIP code on TikTok" cluster reached 31 hits — 1 new rule candidate ready for review tonight' },
+      { from: 'agent', body: 'Advisor · "VIP code on TikTok" cluster reached 31 hits — 1 new rule candidate ready for review tonight' },
       { from: 'customer', body: 'ขอบคุณค่ะ พึ่งสมัคร VIP เมื่อสัปดาห์ก่อน รู้สึกดีจังที่ได้ใช้' },
       {
         from: 'ai',
         body:
-          'ยินดีต้อนรับสู่ VIP ค่ะ 🌟 ขอให้ช้อปสนุกนะคะ\nถ้ามีคำถามเรื่องสินค้าหรือ size · ทักได้ตลอด 24 ชม. ค่ะ',
+          'ยินดีต้อนรับสู่ VIP ค่ะ ขอให้ช้อปสนุกนะคะ\nถ้ามีคำถามเรื่องสินค้าหรือ size · ทักได้ตลอด 24 ชม. ค่ะ',
         trace: {
           confidence: 0.94,
           tier: 'auto',

@@ -29,7 +29,7 @@ export const conversations: MockConversation[] = [
       {
         id: 'msg_002',
         direction: 'outbound',
-        body: 'สวัสดีค่ะคุณพิมพ์ลภัส 🌿 พัสดุของคุณส่งจาก Kerry แล้วเมื่อวานนี้ คาดว่าถึงพรุ่งนี้ก่อนเที่ยงค่ะ ติดตามได้ที่ EC123456789TH',
+        body: 'สวัสดีค่ะคุณพิมพ์ลภัส พัสดุของคุณส่งจาก Kerry แล้วเมื่อวานนี้ คาดว่าถึงพรุ่งนี้ก่อนเที่ยงค่ะ ติดตามได้ที่ EC123456789TH',
         sentAt: ago(11),
         aiGenerated: true,
         confidence: 0.94,
@@ -82,7 +82,7 @@ export const conversations: MockConversation[] = [
       {
         id: 'msg_009',
         direction: 'outbound',
-        body: 'ขณะนี้ยังไม่มีโปร 3 แถม 1 นะคะ แต่ซื้อครบ ฿1500 รับส่วนลด ฿200 ค่ะ ✨',
+        body: 'ขณะนี้ยังไม่มีโปร 3 แถม 1 นะคะ แต่ซื้อครบ ฿1500 รับส่วนลด ฿200 ค่ะ',
         sentAt: ago(33),
         aiGenerated: true,
         confidence: 0.88,
@@ -215,7 +215,7 @@ export const conversations: MockConversation[] = [
       {
         id: 'msg_024',
         direction: 'outbound',
-        body: 'Hi! For 50+ pcs wholesale, we offer 28% off retail. Let me know which SKU you’re interested in and I’ll send a quote 🙏',
+        body: 'Hi! For 50+ pcs wholesale, we offer 28% off retail. Let me know which SKU you’re interested in and I’ll send a quote',
         sentAt: ago(98),
         aiGenerated: true,
         confidence: 0.92,
@@ -241,7 +241,7 @@ export const conversations: MockConversation[] = [
       {
         id: 'msg_027',
         direction: 'outbound',
-        body: 'ไม่มี alcohol เลยค่ะ สูตรของเราเป็น clean formulation, fragrance-free, paraben-free, alcohol-free ค่ะ ✨',
+        body: 'ไม่มี alcohol เลยค่ะ สูตรของเราเป็น clean formulation, fragrance-free, paraben-free, alcohol-free ค่ะ',
         sentAt: t(1, 14, 28),
         aiGenerated: true,
         confidence: 0.97,
@@ -369,7 +369,7 @@ export const conversations: MockConversation[] = [
       {
         id: 'msg_042',
         direction: 'outbound',
-        body: 'ขอบคุณมากค่ะคุณพิมพ์ลภัส 🙏 รีวิวที่ Shopee ด้วยจะเป็นกำลังใจให้ทีมเลยค่ะ ✨',
+        body: 'ขอบคุณมากค่ะคุณพิมพ์ลภัส รีวิวที่ Shopee ด้วยจะเป็นกำลังใจให้ทีมเลยค่ะ',
         sentAt: t(4, 9, 5),
         aiGenerated: true,
         confidence: 0.91,

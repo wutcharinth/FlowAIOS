@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { SCENARIOS, type ScenarioId } from '@/lib/demo/scenarios';
+import { CategoryIcon } from './CategoryIcon';
 
 /**
  * Interactive demo with 5 ecommerce scenarios, each highlighting a
@@ -163,9 +164,7 @@ export function ScenarioPlayground({ initialLang = 'th' }: { initialLang?: 'th' 
               }`}
             >
               <div className="flex items-center gap-2">
-                <span aria-hidden className="text-base">
-                  {s.emoji}
-                </span>
+                <CategoryIcon name={s.icon} size={16} />
                 <span className="text-[12.5px] font-medium">
                   {lang === 'th' ? s.category.th : s.category.en}
                 </span>
@@ -182,7 +181,7 @@ export function ScenarioPlayground({ initialLang = 'th' }: { initialLang?: 'th' 
           <header className="flex items-center justify-between gap-3 border-b border-hairline bg-paper-2 px-5 py-3">
             <div className="min-w-0">
               <p className="flex items-center gap-2 text-[14px] font-semibold text-ink">
-                <span aria-hidden>{active.emoji}</span>
+                <CategoryIcon name={active.icon} size={16} className="text-warm" />
                 {active.brand}
               </p>
               <p className="truncate text-[12px] text-mute">

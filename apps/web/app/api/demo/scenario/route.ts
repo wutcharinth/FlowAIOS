@@ -131,7 +131,9 @@ export async function POST(req: Request) {
     const res = await generate({
       messages,
       temperature: 0.5,
-      maxTokens: 350,
+      // 600 gives Thai replies room to land at 3-6 lines without truncation;
+      // Thai chars take more tokens than Latin so 350 was clipping mid-sentence.
+      maxTokens: 600,
     });
     const reply = res.text.trim();
 

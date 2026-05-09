@@ -3,7 +3,7 @@
  *
  * Each scenario boots a fictional brand store with its own catalog facts
  * and policies, then highlights a distinct AI capability that's hard to
- * deliver without FlowAIOS:
+ * deliver without context-aware retail tooling:
  *
  *   beauty       Customer memory + ingredient compatibility
  *   fashion      Stock check + size matrix + alternative cross-sell
@@ -22,9 +22,17 @@ export type ScenarioId =
   | 'electronics'
   | 'supplements';
 
+/** Icon glyph identifiers — render via the CategoryIcon component. */
+export type CategoryIconKey =
+  | 'sparkles'
+  | 'shirt'
+  | 'bowl'
+  | 'monitor'
+  | 'leaf';
+
 export interface ScenarioMeta {
   id: ScenarioId;
-  emoji: string;
+  icon: CategoryIconKey;
   category: { th: string; en: string };
   brand: string;
   tagline: { th: string; en: string };
@@ -36,7 +44,7 @@ export interface ScenarioMeta {
 export const SCENARIOS: ReadonlyArray<ScenarioMeta> = [
   {
     id: 'beauty',
-    emoji: '✨',
+    icon: 'sparkles',
     category: { th: 'Beauty / Skincare', en: 'Beauty / Skincare' },
     brand: 'Klin Skin',
     tagline: {
@@ -48,8 +56,8 @@ export const SCENARIOS: ReadonlyArray<ScenarioMeta> = [
       en: 'AI remembers allergies + checks ingredient compatibility before recommending',
     },
     greeting: {
-      th: 'สวัสดีค่ะ ยินดีต้อนรับสู่ Klin Skin 🌿 มีอะไรให้ช่วยไหมคะ? คุณเคยซื้อ Cleansing Balm Original เดือนที่แล้ว · ขอจดข้อมูลผิวเพิ่มเติมได้ไหมคะ',
-      en: 'Hi! Welcome back to Klin Skin 🌿 You bought Cleansing Balm Original last month — anything else I can help with today? Mind if I ask a couple of skin details?',
+      th: 'สวัสดีค่ะ ยินดีต้อนรับสู่ Klin Skin มีอะไรให้ช่วยไหมคะ คุณเคยซื้อ Cleansing Balm Original เดือนที่แล้ว ขอจดข้อมูลผิวเพิ่มเติมเพื่อแนะนำให้แม่นยำขึ้นได้ไหมคะ',
+      en: "Hi! Welcome back to Klin Skin. You bought Cleansing Balm Original last month — anything else I can help with today? Mind if I ask a couple of skin details so I can recommend more accurately?",
     },
     starters: [
       {
@@ -68,7 +76,7 @@ export const SCENARIOS: ReadonlyArray<ScenarioMeta> = [
   },
   {
     id: 'fashion',
-    emoji: '👗',
+    icon: 'shirt',
     category: { th: 'Fashion', en: 'Fashion' },
     brand: 'Sira Studio',
     tagline: {
@@ -80,8 +88,8 @@ export const SCENARIOS: ReadonlyArray<ScenarioMeta> = [
       en: 'AI checks live stock + size matrix + cross-sells alternatives when sold out',
     },
     greeting: {
-      th: 'สวัสดีค่ะ Sira Studio 👋 มาเช็คไอเทมตัวไหนคะ? พิมพ์ SKU หรือชื่อรุ่นได้เลยค่ะ',
-      en: 'Welcome to Sira Studio 👋 Looking for a specific item? Drop the SKU or item name.',
+      th: 'สวัสดีค่ะ Sira Studio มาเช็คไอเทมตัวไหนคะ พิมพ์ SKU หรือชื่อรุ่นมาได้เลย หรือบอกสไตล์ที่ต้องการให้ดิฉันแนะนำได้ค่ะ',
+      en: 'Welcome to Sira Studio. Looking for a specific item? Drop the SKU or item name, or describe the style you have in mind and I can recommend.',
     },
     starters: [
       {
@@ -94,13 +102,13 @@ export const SCENARIOS: ReadonlyArray<ScenarioMeta> = [
       },
       {
         th: 'นโยบายคืนสินค้าเป็นยังไงคะ ไม่พอดีไซส์',
-        en: 'What\'s the return policy if the size doesn\'t fit?',
+        en: "What's the return policy if the size doesn't fit?",
       },
     ],
   },
   {
     id: 'food',
-    emoji: '🍜',
+    icon: 'bowl',
     category: { th: 'Food / Delivery', en: 'Food / Delivery' },
     brand: 'Krua Mae',
     tagline: {
@@ -112,8 +120,8 @@ export const SCENARIOS: ReadonlyArray<ScenarioMeta> = [
       en: 'AI tracks order status real-time + accepts modifications before kitchen-out',
     },
     greeting: {
-      th: 'สวัสดีค่ะ Krua Mae 🍜 มีออเดอร์ที่อยากเช็คหรือเปล่าคะ? ส่งเลขออเดอร์มาได้เลย',
-      en: 'Hi from Krua Mae 🍜 Order to track or modify? Drop the order number.',
+      th: 'สวัสดีค่ะ Krua Mae มีออเดอร์ที่อยากเช็คหรือสาขาที่อยากสั่งไหมคะ ส่งเลขออเดอร์มาได้เลย หรือบอกพิกัดให้ดิฉันแนะนำสาขาใกล้ที่สุดได้ค่ะ',
+      en: 'Hi from Krua Mae. Order to track or modify? Drop the order number — or share your area and I can suggest the nearest branch.',
     },
     starters: [
       {
@@ -126,13 +134,13 @@ export const SCENARIOS: ReadonlyArray<ScenarioMeta> = [
       },
       {
         th: 'สาขาทองหล่อปิดกี่โมง ยังสั่งทันไหม',
-        en: "What time does Thonglor branch close? Can I still order?",
+        en: 'What time does Thonglor branch close? Can I still order?',
       },
     ],
   },
   {
     id: 'electronics',
-    emoji: '🖥',
+    icon: 'monitor',
     category: { th: 'Electronics', en: 'Electronics' },
     brand: 'Volt Hub',
     tagline: {
@@ -144,8 +152,8 @@ export const SCENARIOS: ReadonlyArray<ScenarioMeta> = [
       en: 'AI compares specs + answers warranty + recommends an upgrade path',
     },
     greeting: {
-      th: 'สวัสดีครับ Volt Hub ⚡ ถามเรื่อง spec, warranty, หรือ trade-in ได้เลยครับ',
-      en: 'Welcome to Volt Hub ⚡ Ask me about specs, warranty, or trade-in.',
+      th: 'สวัสดีครับ Volt Hub ถามเรื่องสเปก, ประกัน, หรือ trade-in ได้เลยครับ บอกการใช้งานหลักของเครื่องมา ผมจะแนะนำตัวที่คุ้มที่สุดให้ครับ',
+      en: 'Welcome to Volt Hub. Ask about specs, warranty, or trade-in. Tell me the main use case for the gear and I can point you to the best-value pick.',
     },
     starters: [
       {
@@ -164,7 +172,7 @@ export const SCENARIOS: ReadonlyArray<ScenarioMeta> = [
   },
   {
     id: 'supplements',
-    emoji: '🌿',
+    icon: 'leaf',
     category: { th: 'Health Supplements', en: 'Health Supplements' },
     brand: 'Vita Bloom',
     tagline: {
@@ -176,8 +184,8 @@ export const SCENARIOS: ReadonlyArray<ScenarioMeta> = [
       en: "AI knows what it can't answer — escalates clinical questions to the pharmacist team",
     },
     greeting: {
-      th: 'สวัสดีค่ะ Vita Bloom 🌿 ถามเรื่องสินค้า, ส่วนผสม, หรือคำสั่งซื้อได้เลยค่ะ คำถามเรื่องสุขภาพเฉพาะบุคคลจะส่งต่อให้เภสัชกรดูแลค่ะ',
-      en: "Hi from Vita Bloom 🌿 Ask about products, ingredients, or orders. Anything about your specific health condition will be routed to our pharmacist team.",
+      th: 'สวัสดีค่ะ Vita Bloom ถามเรื่องสินค้า, ส่วนผสม, หรือคำสั่งซื้อได้เลยค่ะ คำถามเกี่ยวกับสุขภาพเฉพาะบุคคลจะส่งต่อให้ทีมเภสัชกรดูแลโดยตรง เพื่อให้คำตอบที่ปลอดภัยและถูกต้องที่สุดค่ะ',
+      en: 'Hi from Vita Bloom. Ask about products, ingredients, or orders. Anything about your specific health condition or medications goes to our pharmacist team directly so you get a safe, accurate answer.',
     },
     starters: [
       {

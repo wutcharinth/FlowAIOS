@@ -102,7 +102,7 @@ export default function InboxPreviewPage() {
               {
                 id: 'm1',
                 direction: 'inbound',
-                body: 'สวัสดีค่ะ มี cleansing balm ตัวใหม่ที่หลายคนถามถึงรึยังคะ ตัวเก่าใช้หมดแล้ว 😊',
+                body: 'สวัสดีค่ะ มี cleansing balm ตัวใหม่ที่หลายคนถามถึงรึยังคะ ตัวเก่าใช้หมดแล้ว',
                 aiGenerated: false,
                 sentAt: new Date(Date.now() - 18 * 60_000).toISOString(),
               },

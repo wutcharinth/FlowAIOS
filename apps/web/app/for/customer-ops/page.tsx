@@ -13,21 +13,21 @@ export default function CustomerOpsLanding() {
       headline="AI ร่างคำตอบ"
       headlineEm="ทีมคุณ approve"
       headlineTrail="— Audit log ครบทุก reply"
-      lead="ทีมคุณยังคุมแบรนด์ — แต่ AI ตัดงานซ้ำซากออก. Confidence-gated auto-reply, customer memory ที่ portable, audit log สำหรับทุก reply, escalation routing ที่กำหนดได้. ออกแบบสำหรับ COO ที่ต้อง justify spend และ CS manager ที่กลัว turnover."
+      lead="ทีมคุณยังคุมแบรนด์ ·แต่ AI ตัดงานซ้ำซากออก. Confidence-gated auto-reply, customer memory ที่ portable, audit log สำหรับทุก reply, escalation routing ที่กำหนดได้. ออกแบบสำหรับ COO ที่ต้อง justify spend และ CS manager ที่กลัว turnover."
       primaryCta={{ label: 'นัด demo (Thai live)', href: '/contact' }}
       secondaryCta={{ label: 'ดู audit + PDPA', href: '/pricing#enterprise' }}
       channels={['LINE OA', 'Shopee', 'Lazada', 'Instagram', 'Facebook', 'Email']}
       pains={[
         {
-          title: 'Tool เก่าตอบไม่ได้ — ทีมตอบเอง',
+          title: 'Tool เก่าตอบไม่ได้ ·ทีมตอบเอง',
           quote:
-            'Zaapi เป็นแค่ viewer — agent ของฉันยังพิมพ์เองทุกข้อความ. SLA เราเข้าเป้า แต่คนของฉันลาออก 2 คนใน 3 เดือน. หัวจะระเบิด.',
+            'Zaapi เป็นแค่ viewer ·agent ของฉันยังพิมพ์เองทุกข้อความ. SLA เราเข้าเป้า แต่คนของฉันลาออก 2 คนใน 3 เดือน. หัวจะระเบิด.',
           persona: 'Pim · CS Manager (35 staff fashion)',
         },
         {
           title: 'Escalation context หาย',
           quote:
-            'พอ agent escalate มาที่ฉัน — กว่าจะหาเคสใน Zaapi เจอ context หายไปครึ่งนึงแล้ว. เคสด่วนเสีย customer trust ก่อนทีมจะเข้าถึงด้วยซ้ำ.',
+            'พอ agent escalate มาที่ฉัน ·กว่าจะหาเคสใน Zaapi เจอ context หายไปครึ่งนึงแล้ว. เคสด่วนเสีย customer trust ก่อนทีมจะเข้าถึงด้วยซ้ำ.',
           persona: 'Pim · CS Manager (35 staff fashion)',
         },
         {
@@ -41,17 +41,17 @@ export default function CustomerOpsLanding() {
         {
           title: 'Confidence-gated auto-reply',
           tag: 'Strongest signal in study',
-          body: 'AI replies on >90% confidence, drafts on 70-90%, escalates on <70%. ทีมคุณยังเป็นคนตัดสินใจ — แต่ไม่ต้องพิมพ์ตั้งแต่ศูนย์. Handle time ลดเฉลี่ย 32% ใน pilot.',
+          body: 'AI replies on >90% confidence, drafts on 70-90%, escalates on <70%. ทีมคุณยังเป็นคนตัดสินใจ ·แต่ไม่ต้องพิมพ์ตั้งแต่ศูนย์. Handle time ลดเฉลี่ย 32% ใน pilot.',
         },
         {
           title: 'Knowledge Base + Auto-Lessons',
           tag: 'Top-rated planned feature',
-          body: 'AI เห็นทีมแก้ draft ของมันยังไง — แล้วเสนอเป็น lesson ให้คุณ approve. กลายเป็น rule ที่ AI ใช้ในเคสคล้ายกัน. ทีมไม่ต้องสอน AI ซ้ำ — มันสังเกตเอง.',
+          body: 'AI เห็นทีมแก้ draft ของมันยังไง ·แล้วเสนอเป็น lesson ให้คุณ approve. กลายเป็น rule ที่ AI ใช้ในเคสคล้ายกัน. ทีมไม่ต้องสอน AI ซ้ำ ·มันสังเกตเอง.',
         },
         {
           title: 'Intelligence Dashboard',
           tag: 'Coming with M1.5',
-          body: 'รู้ว่าคำถามอะไรซ้ำ, sentiment ตกตอนไหน, ทีมไหนรับโหลดเกิน. "Automate next" widget เสนอ rule candidate ให้ approve — ไม่ต้องเดา.',
+          body: 'รู้ว่าคำถามอะไรซ้ำ, sentiment ตกตอนไหน, ทีมไหนรับโหลดเกิน. "Automate next" widget เสนอ rule candidate ให้ approve ·ไม่ต้องเดา.',
         },
       ]}
       artifact={{ kind: 'inbox', title: 'Inbox · 3 of 1,800 conversations today' }}

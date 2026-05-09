@@ -93,7 +93,7 @@ export function VerticalChooser({ initialVertical }: { initialVertical?: Vertica
                 </h2>
                 <p className="lead mt-3">
                   เลือกตอบเพื่อให้ FlowAIOS แสดง channel + use case ที่เกี่ยวกับคุณ
-                  ไม่ต้องเลือกตอนนี้ก็ได้ — กลับมาเปลี่ยนได้ตลอด
+                  ไม่ต้องเลือกตอนนี้ก็ได้ · กลับมาเปลี่ยนได้ตลอด
                 </p>
               </div>
               {vertical && (

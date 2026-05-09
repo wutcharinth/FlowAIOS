@@ -119,7 +119,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           ))}
         </nav>
       </header>
-      <div className="flex-1">{children}</div>
+      <main id="main-content" className="flex-1">
+        {children}
+      </main>
     </div>
   );
 }

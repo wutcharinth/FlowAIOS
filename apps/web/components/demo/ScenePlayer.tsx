@@ -75,9 +75,12 @@ export function ScenePlayer() {
           sceneIndex = (sceneIndex + 1) % SCENES.length;
         }
 
-        // Distribute messages across scene duration
+        // Distribute messages across scene duration with an extra 2s
+        // hold at the end so the final message lingers before transition.
         const nextScene = SCENES[sceneIndex]!;
-        const perMsg = nextScene.duration / (nextScene.messages.length + 1);
+        const END_HOLD = 2000;
+        const perMsg =
+          (nextScene.duration - END_HOLD) / (nextScene.messages.length + 1);
         const messageIndex = Math.min(
           Math.floor(elapsed / perMsg) - 1,
           nextScene.messages.length - 1,

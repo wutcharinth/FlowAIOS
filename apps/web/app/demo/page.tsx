@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Nav } from '@/components/marketing/Nav';
 import { Footer } from '@/components/marketing/Footer';
 import { ScenePlayer } from '@/components/demo/ScenePlayer';
-import { Playground } from '@/components/demo/Playground';
+import { ScenarioPlayground } from '@/components/demo/ScenarioPlayground';
 import { DEMO_BRAND, TOTAL_DURATION } from '@/lib/demo/scenes';
 
 const walkthroughSeconds = Math.round(TOTAL_DURATION / 1000);
@@ -71,17 +71,19 @@ export default function DemoPage() {
         {/* Playground */}
         <section id="playground" className="border-t border-hairline py-16">
           <div className="mx-auto w-[min(1240px,calc(100%-48px))]">
-            <p className="label-mono">Playground · live Gemini</p>
+            <p className="label-mono">Playground · 5 live ecommerce stores</p>
             <h2 className="display-md mt-3 max-w-[24ch]">
-              Now ask <em className="not-italic font-semibold text-warm">your</em> question
+              Pick a category. Ask the{' '}
+              <em className="not-italic accent-word whitespace-nowrap">store&rsquo;s AI</em> anything.
             </h2>
-            <p className="lead mt-4 max-w-[58ch]">
-              The walkthrough above is scripted. The chat below is the same concierge running
-              on every page. Ask about pricing, channels, PDPA, what&rsquo;s coming next, or
-              anything else.
+            <p className="lead mt-4 max-w-[60ch]">
+              Each tab is a different ecommerce category — beauty, fashion, food, electronics,
+              supplements — with its own catalog, policies, and the customer-service rules that
+              category actually needs. The AI roleplays as that store&rsquo;s agent so you can
+              feel how it handles each industry&rsquo;s real challenges.
             </p>
             <div className="mt-10">
-              <Playground />
+              <ScenarioPlayground />
             </div>
           </div>
         </section>

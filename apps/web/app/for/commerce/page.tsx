@@ -1,15 +1,15 @@
 import { VerticalLanding } from '@/components/marketing/VerticalLanding';
 
 export const metadata = {
-  title: 'FlowAIOS for DTC Commerce · LINE OA + Shopee + TikTok ที่เดียว',
+  title: 'FlowAIOS for Ecommerce · LINE OA + Shopee + TikTok ที่เดียว',
   description:
-    'AI ตอบลูกค้าเอง ·เมื่อมั่นใจ. ส่งให้คุณรีวิว ·เมื่อต้องระวัง. รวม LINE OA, Shopee, TikTok Shop, Lazada, IG ในกล่องเดียว ·สำหรับ DTC commerce ในไทย.',
+    'AI ตอบลูกค้าเอง ·เมื่อมั่นใจ. ส่งให้คุณรีวิว ·เมื่อต้องระวัง. รวม LINE OA, Shopee, TikTok Shop, Lazada, IG ในกล่องเดียว ·สำหรับ ecommerce omnichannel ในไทย.',
 };
 
 export default function CommerceLanding() {
   return (
     <VerticalLanding
-      kicker="For · DTC Commerce"
+      kicker="For · Ecommerce"
       headline="ลูกค้าถามตอนตีสอง"
       headlineEm="AI ตอบเองได้"
       headlineTrail="— ส่งดราฟต์ให้คุณ approve จากมือถือตอนเช้า"

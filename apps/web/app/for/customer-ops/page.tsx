@@ -1,15 +1,15 @@
 import { VerticalLanding } from '@/components/marketing/VerticalLanding';
 
 export const metadata = {
-  title: 'FlowAIOS for Customer Ops · ลด handle time 30% โดยไม่ลดคุณภาพ',
+  title: 'FlowAIOS for Ecommerce with CS team · ลด handle time 30% โดยไม่ลดคุณภาพ',
   description:
-    'สำหรับทีม CS 5–30 คน. AI draft + human approve + audit log. ลดเวลาตอบ ลด turnover. รวม LINE OA + Shopee + IG + Email ในกล่องเดียว.',
+    'สำหรับร้าน omnichannel ที่มีทีม CS 5–30 คน. AI draft + human approve + audit log. ลดเวลาตอบ ลด turnover. รวม LINE OA + Shopee + IG + Email ในกล่องเดียว.',
 };
 
 export default function CustomerOpsLanding() {
   return (
     <VerticalLanding
-      kicker="For · Customer Ops Mid-market"
+      kicker="For · Ecommerce with CS team"
       headline="AI ร่างคำตอบ"
       headlineEm="ทีมคุณ approve"
       headlineTrail="— Audit log ครบทุก reply"

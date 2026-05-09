@@ -30,8 +30,7 @@ const CHANNELS: ReadonlyArray<Channel> = [
 ];
 
 const PRESETS: ReadonlyArray<{ id: Vertical | 'custom'; label: string }> = [
-  { id: 'commerce', label: 'DTC commerce' },
-  { id: 'customer-ops', label: 'Customer-ops' },
+  { id: 'commerce', label: 'Ecommerce' },
   { id: 'services', label: 'Services' },
   { id: 'b2b', label: 'B2B' },
   { id: 'custom', label: 'Custom' },

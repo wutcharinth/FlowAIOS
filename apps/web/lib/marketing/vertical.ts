@@ -1,4 +1,9 @@
-export const VERTICALS = ['commerce', 'customer-ops', 'services', 'b2b'] as const;
+// Three vertical categories. We collapsed "Customer Ops Mid-market"
+// into "Ecommerce" — in the Thai market most CS-team-led businesses are
+// omnichannel sellers (Pim's fashion brand, etc.), not standalone CS
+// operations. The /for/customer-ops landing still exists as a deeper
+// sub-page for the CS-team buyer flavor, linked from /for/commerce.
+export const VERTICALS = ['commerce', 'services', 'b2b'] as const;
 export type Vertical = (typeof VERTICALS)[number];
 
 export const VERTICAL_COOKIE = 'flowaios-vertical';
@@ -14,17 +19,11 @@ export interface VerticalProfile {
 export const verticalProfiles: ReadonlyArray<VerticalProfile> = [
   {
     id: 'commerce',
-    label: 'DTC Commerce',
-    description: 'แบรนด์ DTC, ecom, ร้านขายผ่าน LINE OA + Shopee + Lazada + TikTok Shop',
+    label: 'Ecommerce',
+    description:
+      'ขายของออนไลน์หลายช่องทาง · DTC, omnichannel retail, ทีม CS 1–30 คน · LINE OA + Shopee + Lazada + TikTok + IG + FB',
     channels: ['LINE OA', 'Shopee', 'Lazada', 'TikTok Shop', 'Instagram', 'Facebook'],
     ctaHref: '/for/commerce',
-  },
-  {
-    id: 'customer-ops',
-    label: 'Customer Ops Mid-market',
-    description: 'ทีม CS 5–30 คน รองรับลูกค้าหลายช่องทาง ต้องการเครื่องมือควบคุมคุณภาพ + audit',
-    channels: ['LINE OA', 'Shopee', 'Lazada', 'Instagram', 'Facebook', 'Email'],
-    ctaHref: '/for/customer-ops',
   },
   {
     id: 'services',

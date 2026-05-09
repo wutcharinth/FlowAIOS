@@ -35,7 +35,7 @@ const featureArtifact = (kind: NonNullable<VerticalLandingProps['artifact']>['ki
       <div className="space-y-3.5">
         {[
           { tier: 'Auto', score: 94, body: 'พัสดุของคุณส่งจาก Kerry แล้วเมื่อวานนี้…', tone: 'mint' as const },
-          { tier: 'Approval', score: 78, body: 'มีโปร 3 แถม 1 ไหมคะ — เสนอราคาส่ง?', tone: 'warm' as const },
+          { tier: 'Approval', score: 78, body: 'มีโปร 3 แถม 1 ไหมคะ, เสนอราคาส่ง?', tone: 'warm' as const },
           { tier: 'Escalate', score: 31, body: 'พี่อ้อยครับ ขอราคา tier เก่าได้ไหม', tone: 'rose' as const },
         ].map((row) => (
           <div key={row.tier} className="flex items-center gap-3.5">
@@ -67,7 +67,7 @@ const featureArtifact = (kind: NonNullable<VerticalLandingProps['artifact']>['ki
           },
           {
             label: 'AI noticed',
-            body: 'VIP customers ask for monthly code 31× — 28× answered identically.',
+            body: 'VIP customers ask for monthly code 31×; 28× answered identically.',
           },
           {
             label: 'AI noticed',

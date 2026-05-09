@@ -172,18 +172,26 @@ export function LiveThreads() {
         ))}
       </div>
 
-      {/* Scene dots */}
-      <div className="mt-2 flex items-center justify-end gap-1.5 px-1">
+      {/* Scene dots — 24×24 hit area wrapping the visual indicator */}
+      <div className="mt-2 flex items-center justify-end gap-0.5 px-1">
         {SCENES.map((_, i) => (
           <button
             key={i}
             type="button"
             onClick={() => setSceneIndex(i)}
-            aria-label={`Show scene ${i + 1}`}
-            className={`h-1.5 w-1.5 rounded-full transition-all ${
-              i === sceneIndex ? 'w-5 bg-warm' : 'bg-hairline-2 hover:bg-mute'
-            }`}
-          />
+            aria-label={`Show scene ${i + 1} of ${SCENES.length}`}
+            aria-current={i === sceneIndex ? 'true' : undefined}
+            className="group inline-flex h-6 w-6 items-center justify-center"
+          >
+            <span
+              className={`h-1.5 rounded-full transition-all ${
+                i === sceneIndex
+                  ? 'w-5 bg-warm'
+                  : 'w-1.5 bg-hairline-2 group-hover:bg-mute'
+              }`}
+              aria-hidden
+            />
+          </button>
         ))}
       </div>
 

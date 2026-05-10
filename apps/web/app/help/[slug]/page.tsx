@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
-import { findArticle, CATEGORY_LABEL } from '@/lib/help/articles';
+import { findArticle, CATEGORY_LABEL, type BilingualString } from '@/lib/help/articles';
+import { LANG_COOKIE, readLangCookie, type Lang } from '@/lib/marketing/lang';
+import { Figure } from '@/components/help/figures';
 
 export const dynamic = 'force-dynamic';
 
@@ -12,7 +15,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = findArticle(slug);
   if (!article) return { title: 'FlowAIOS — Help' };
-  return { title: `${article.title} · FlowAIOS Help`, description: article.summary };
+  return {
+    title: `${article.title.en} · FlowAIOS Help`,
+    description: article.summary.en,
+  };
 }
 
 export default async function HelpArticlePage({
@@ -24,12 +30,21 @@ export default async function HelpArticlePage({
   const article = findArticle(slug);
   if (!article) notFound();
 
+  const cookieStore = await cookies();
+  const lang: Lang = readLangCookie(cookieStore.get(LANG_COOKIE)?.value);
+
+  const t = (b: BilingualString) => b[lang];
+  const meta =
+    lang === 'th'
+      ? { allArticles: '← บทความทั้งหมด', minLabel: 'นาที', readyHeader: 'พร้อมเริ่มใช้?', signupCta: 'สร้าง workspace →', orCta: 'ดูเดโมต่อ', seeLive: 'ดูจริงในเดโม →' }
+      : { allArticles: '← All articles', minLabel: 'min', readyHeader: 'Ready to ship?', signupCta: 'Create your workspace →', orCta: 'keep exploring the demo', seeLive: 'See it live in the demo →' };
+
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b bg-paper-2/40">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
           <Link href="/help" className="text-sm text-muted-foreground hover:text-foreground">
-            ← All articles
+            {meta.allArticles}
           </Link>
           <Link href="/" className="flex items-center gap-2 text-sm font-semibold">
             <span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-warm to-warm-2 font-mono text-[11px] font-bold text-paper">
@@ -43,37 +58,37 @@ export default async function HelpArticlePage({
       <main className="mx-auto max-w-3xl space-y-6 px-6 py-12">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm">
-            {CATEGORY_LABEL[article.category]} · {article.readMinutes} min
+            {t(CATEGORY_LABEL[article.category])} · {article.readMinutes} {meta.minLabel}
           </p>
           <h1 className="mt-2 text-3xl font-semibold tracking-tight text-ink">
-            {article.title}
+            {t(article.title)}
           </h1>
-          <p className="mt-2 text-base text-muted-foreground">{article.summary}</p>
+          <p className="mt-2 text-base text-muted-foreground">{t(article.summary)}</p>
           {article.demoHref && (
             <Link
               href={article.demoHref}
               className="mt-4 inline-block rounded-md border border-warm/40 bg-warm-soft px-3 py-1.5 text-[12.5px] font-medium text-warm hover:bg-warm hover:text-paper"
             >
-              See it live in the demo →
+              {meta.seeLive}
             </Link>
           )}
         </div>
 
         <article className="prose prose-sm max-w-none">
-          {renderArticleBody(article.body)}
+          {renderArticleBody(t(article.body), lang)}
         </article>
 
         <div className="mt-12 rounded-lg border border-warm/30 bg-warm-soft/30 p-5">
           <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm">
-            Ready to ship?
+            {meta.readyHeader}
           </p>
           <p className="mt-1 text-sm">
             <Link href="/signup" className="font-medium text-warm hover:underline">
-              Create your workspace →
+              {meta.signupCta}
             </Link>{' '}
-            or{' '}
+            ·{' '}
             <Link href="/try" className="text-warm hover:underline">
-              keep exploring the demo
+              {meta.orCta}
             </Link>
             .
           </p>
@@ -83,17 +98,31 @@ export default async function HelpArticlePage({
   );
 }
 
-/** Tiny markdown-ish renderer: handles H1/H2/H3, lists, blockquotes, and code fences. */
-function renderArticleBody(body: string): React.ReactNode {
+/**
+ * Markdown-ish renderer with figure-embed support.
+ *
+ *   <Figure name="three-tier-flow" />
+ *
+ * lines on their own become an inline <Figure /> component.
+ */
+function renderArticleBody(body: string, lang: Lang): React.ReactNode {
   const lines = body.split('\n');
   const blocks: React.ReactNode[] = [];
 
   let i = 0;
   let key = 0;
+  const figureRe = /^<Figure\s+name="([^"]+)"\s*\/>$/;
+
   while (i < lines.length) {
     const line = lines[i]!;
 
-    // Code fence
+    const figureMatch = line.trim().match(figureRe);
+    if (figureMatch) {
+      blocks.push(<Figure key={key++} name={figureMatch[1]!} lang={lang} />);
+      i += 1;
+      continue;
+    }
+
     if (line.startsWith('```')) {
       const buf: string[] = [];
       i += 1;
@@ -113,7 +142,6 @@ function renderArticleBody(body: string): React.ReactNode {
       continue;
     }
 
-    // Headings
     if (line.startsWith('### ')) {
       blocks.push(
         <h3 key={key++} className="mt-6 text-base font-semibold">
@@ -142,7 +170,6 @@ function renderArticleBody(body: string): React.ReactNode {
       continue;
     }
 
-    // Lists
     if (line.startsWith('- ')) {
       const items: string[] = [];
       while (i < lines.length && lines[i]!.startsWith('- ')) {
@@ -159,7 +186,6 @@ function renderArticleBody(body: string): React.ReactNode {
       continue;
     }
 
-    // Blockquote / callout
     if (line.startsWith('> ')) {
       blocks.push(
         <blockquote
@@ -173,13 +199,11 @@ function renderArticleBody(body: string): React.ReactNode {
       continue;
     }
 
-    // Empty line
     if (line.trim() === '') {
       i += 1;
       continue;
     }
 
-    // Paragraph (collect contiguous non-empty non-special lines)
     const para: string[] = [line];
     i += 1;
     while (
@@ -188,7 +212,8 @@ function renderArticleBody(body: string): React.ReactNode {
       !lines[i]!.startsWith('#') &&
       !lines[i]!.startsWith('- ') &&
       !lines[i]!.startsWith('> ') &&
-      !lines[i]!.startsWith('```')
+      !lines[i]!.startsWith('```') &&
+      !figureRe.test(lines[i]!.trim())
     ) {
       para.push(lines[i]!);
       i += 1;
@@ -203,9 +228,7 @@ function renderArticleBody(body: string): React.ReactNode {
   return <>{blocks}</>;
 }
 
-/** Render inline `code` and **bold** + naive link parsing. */
 function renderInline(text: string): React.ReactNode {
-  // Split on backticks first.
   const parts = text.split(/(`[^`]+`)/g);
   return parts.map((p, i) => {
     if (p.startsWith('`') && p.endsWith('`')) {
@@ -218,7 +241,6 @@ function renderInline(text: string): React.ReactNode {
         </code>
       );
     }
-    // Handle **bold**
     const boldParts = p.split(/(\*\*[^*]+\*\*)/g);
     return boldParts.map((b, j) => {
       if (b.startsWith('**') && b.endsWith('**')) {

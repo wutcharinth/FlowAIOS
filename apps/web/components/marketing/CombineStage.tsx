@@ -192,19 +192,19 @@ export function CombineStage() {
       ))}
 
       <div
-        className="absolute left-1/2 top-[55%] z-[4] w-[58%] min-w-0 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-xl border border-hairline bg-paper shadow-terminal sm:w-[64%] sm:min-w-[260px]"
+        className="absolute left-1/2 top-[55%] z-[4] w-[68%] min-w-0 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-xl border border-hairline bg-paper shadow-terminal sm:w-[64%] sm:min-w-[260px]"
       >
         <div className="flex items-center gap-2 border-b border-hairline bg-paper-2 px-3 py-2.5">
           <span
             className="flex h-3.5 w-3.5 items-center justify-center rounded bg-gradient-to-br from-warm to-warm-2 text-paper"
             aria-hidden
           />
-          <span className="font-mono text-[12px] font-medium text-ink-2">
+          <span className="font-mono text-[11px] font-medium text-ink-2 sm:text-[12px]">
             flowaios.app / inbox
           </span>
           <span className="ml-auto inline-flex items-center gap-1.5 font-mono text-[10px] text-mint">
             <span className="flowaios-stage-pulse h-1.5 w-1.5 rounded-full bg-mint" />
-            AI OS Online
+            <span className="hidden sm:inline">AI OS</span> Online
           </span>
         </div>
 
@@ -212,9 +212,9 @@ export function CombineStage() {
           {ROWS.map((r, i) => (
             <li
               key={i}
-              className="grid grid-cols-[20px_1fr_auto] items-center gap-2.5 border-b border-hairline px-3 py-2.5 last:border-b-0"
+              className="grid grid-cols-[18px_1fr_auto] items-center gap-2 border-b border-hairline px-3 py-2.5 last:border-b-0 sm:grid-cols-[20px_1fr_auto] sm:gap-2.5"
             >
-              <BrandLogo channel={r.channel} size={20} />
+              <BrandLogo channel={r.channel} size={18} className="sm:!h-5 sm:!w-5" />
               <div className="min-w-0">
                 <div className="text-[12.5px] font-medium text-ink">
                   {r.name}
@@ -224,7 +224,7 @@ export function CombineStage() {
                 </div>
               </div>
               <span
-                className={`rounded-full px-1.5 py-0.5 font-mono text-[9.5px] uppercase tracking-[0.04em] ${PILL_CLASS[r.pill]}`}
+                className={`hidden rounded-full px-1.5 py-0.5 font-mono text-[9.5px] uppercase tracking-[0.04em] sm:inline-block ${PILL_CLASS[r.pill]}`}
               >
                 {r.pillLabel}
               </span>

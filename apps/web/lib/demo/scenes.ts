@@ -116,12 +116,12 @@ export const SCENES: Scene[] = [
       {
         from: 'ai',
         body:
-          'พร้อมค่ะ LC-2024-OAT ในไซส์ M เหลืออยู่ 67 ตัวค่ะ\n\nQuote 50 ชิ้น × ฿420 (after 28% wholesale) = ฿21,000\nShipping to SG: DHL ~฿850 · ETA 4–6 days\n\nต้องการ proforma invoice ส่งไปที่อีเมลไหนคะ?',
+          "Good news — LC-2024-OAT in size M, 67 in stock.\n\nQuote: 50 pcs × ฿420 (after 28% wholesale) = ฿21,000\nShipping to SG: DHL ~฿850 · ETA 4–6 days\n\nWhich email should I send the proforma invoice to?",
         trace: {
           confidence: 0.88,
           tier: 'auto',
           reasoning:
-            'SKU confirmed, stock checked, pricing matrix applied. Confidence raised post-approval since data is now verified.',
+            'SKU confirmed, stock checked, pricing matrix applied. Confidence raised post-approval since data is now verified. Reply held in English to match the customer thread.',
           sources: ['oms · stock check', 'kb · DHL SG rates', 'lesson · PI workflow'],
         },
       },

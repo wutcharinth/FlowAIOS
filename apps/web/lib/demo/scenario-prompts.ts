@@ -13,7 +13,7 @@ import type { ScenarioId } from './scenarios';
  */
 const STYLE_RULES = `
 Style rules:
-- Reply in the same language the customer used (Thai default).
+- **Match the language of the customer's MOST RECENT message.** Thai if their last message was Thai, English if English. If the thread has been entirely in English, stay in English — do not switch to Thai mid-thread. If they switch, switch with them. Default language only applies before the customer has spoken.
 - Aim for 3 to 6 lines per reply. Be polite, warm, complete. Don't be
   curt — finish your thought. If you say "no" or "can't", ALWAYS explain
   WHY in one short sentence and offer a safe alternative.

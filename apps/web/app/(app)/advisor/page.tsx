@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { listAdvisorRules, getDashboardMetrics, getLesson } from '@/lib/api';
 import { RuleRow } from '@/components/advisor/RuleRow';
 import { RulesTable } from '@/components/advisor/RulesTable';
+import { PageGuide } from '@/components/app/page-guide';
 
 export const dynamic = 'force-dynamic';
 
@@ -67,6 +68,18 @@ export default async function AdvisorPage({
           it ships.
         </p>
       </header>
+
+      <PageGuide
+        title="What is the Advisor?"
+        what="Auto-rules that short-circuit Gemini when the same question repeats often. The Advisor watches recurring clusters + approved lessons, drafts a candidate rule, and waits for your approval before it goes live."
+        when="Open this when (a) a candidate is awaiting approval — the inbox + intelligence dashboards link here when one shows up, or (b) you want to review which rules currently auto-handle replies without the LLM."
+        how={[
+          'Skim Pending: each candidate shows the matching pattern + sample template + confidence. Edit the template before approving — the AI proposed it but the wording is yours.',
+          'Approve to ship: the rule starts handling matching messages immediately, with the apply count surfaced under Active.',
+          'Active rules are revocable any time — disable to pull a rule out of production without losing the history.',
+        ]}
+        helpSlug="ai-tuning"
+      />
 
       {prefill && prefilledRule && (
         <PrefillBanner

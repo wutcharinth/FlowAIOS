@@ -4,6 +4,7 @@ import { requireMembership } from '@/lib/auth/current-user';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { PageGuide } from '@/components/app/page-guide';
 import { runLifecycleAction, runPromotionAction } from './actions';
 
 export const dynamic = 'force-dynamic';
@@ -97,6 +98,19 @@ export default async function MemoryGovernancePage() {
           </form>
         </div>
       </div>
+
+      <PageGuide
+        title="What is memory governance?"
+        what="A dashboard for the per-customer facts FlowAIOS remembers across conversations — allergies, preferences, complaints, tone. It's the source of personalization in every AI reply."
+        when="Open this when an AI reply uses outdated or wrong info about a customer, when you want to dedup a noisy memory, or to review what the AI is auto-extracting under PDPA approval mode."
+        how={[
+          'Skim the stat cards: high contradicted count means the AI is auto-resolving conflicts well.',
+          'Approve / reject pending facts when PDPA mode is "approval".',
+          'For a wrong memory: archive (drops it) or contradict (newer info wins). For a duplicate cluster: it has likely already been merged — check the merged count.',
+          'Promote candidates that recur across many customers to org-wide lessons.',
+        ]}
+        helpSlug="memory-lifecycle"
+      />
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
         <Stat

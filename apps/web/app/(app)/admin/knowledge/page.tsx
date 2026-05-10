@@ -4,6 +4,7 @@ import { requireMembership } from '@/lib/auth/current-user';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { PageGuide } from '@/components/app/page-guide';
 
 export const dynamic = 'force-dynamic';
 
@@ -32,6 +33,18 @@ export default async function KnowledgePage() {
           <Link href="/admin/knowledge/new">+ New article</Link>
         </Button>
       </div>
+
+      <PageGuide
+        title="What is the knowledge base?"
+        what="Org-specific articles FlowAIOS pulls into AI context when the customer's question matches. Embeddings are auto-generated; retrieval is vector + keyword."
+        when="Add articles for any policy or product fact you'd otherwise have to teach a new agent. If the AI says 'let me check' for a question that has a clear answer in your business, you're missing a KB article."
+        how={[
+          'Title the article the way customers ask the question, not the way you describe it internally.',
+          'Body should be task-shaped: "When customer asks X, do Y. Sample reply: …" The AI reuses sample phrasing.',
+          'One topic per article. Long policies should split. 30+ articles is plenty for most brands.',
+        ]}
+        helpSlug="knowledge-base"
+      />
 
       <Card>
         <CardHeader>

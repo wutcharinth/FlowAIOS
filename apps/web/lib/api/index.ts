@@ -160,17 +160,81 @@ export async function getDashboardMetrics(): Promise<MockDashboardMetrics> {
 
 // — Advisor rules ——————————————————————————————————————————————————————————————
 
-export async function listAdvisorRules(status?: 'pending' | 'active' | 'disabled'): Promise<MockAdvisorRule[]> {
-  if (!mocksEnabled()) return notImplemented('advisor');
-  let rows = [...mockRules];
-  if (status) rows = rows.filter((r) => r.status === status);
-  rows.sort((a, b) => b.appliedCount - a.appliedCount);
-  return rows;
+interface AdvisorRuleRow {
+  id: string;
+  org_id: string;
+  name: string;
+  condition_text: string;
+  action_text: string;
+  source: 'cluster' | 'lesson' | 'manual';
+  source_id: string | null;
+  status: 'pending' | 'active' | 'disabled';
+  confidence: number;
+  applied_count: number | null;
+  last_applied_at: string | null;
+}
+
+function ruleRowToMock(r: AdvisorRuleRow): MockAdvisorRule {
+  return {
+    id: r.id,
+    orgId: r.org_id,
+    name: r.name,
+    condition: r.condition_text,
+    action: r.action_text,
+    source: r.source,
+    sourceId: r.source_id,
+    status: r.status,
+    confidence: r.confidence,
+    appliedCount: r.applied_count ?? 0,
+    lastAppliedAt: r.last_applied_at,
+    sampleMatches: [],
+  };
+}
+
+export async function listAdvisorRules(
+  status?: 'pending' | 'active' | 'disabled',
+): Promise<MockAdvisorRule[]> {
+  if (mocksEnabled()) {
+    let rows = [...mockRules];
+    if (status) rows = rows.filter((r) => r.status === status);
+    rows.sort((a, b) => b.appliedCount - a.appliedCount);
+    return rows;
+  }
+
+  const { createAdminClient } = await import('@/lib/supabase/admin');
+  const { requireMembership } = await import('@/lib/auth/current-user');
+  const { orgId } = await requireMembership();
+  const admin = createAdminClient();
+  let q = admin
+    .from('advisor_rules')
+    .select(
+      'id, org_id, name, condition_text, action_text, source, source_id, status, confidence, applied_count, last_applied_at',
+    )
+    .eq('org_id', orgId)
+    .order('applied_count', { ascending: false, nullsFirst: false })
+    .limit(200);
+  if (status) q = q.eq('status', status);
+  const { data } = await q;
+  return ((data ?? []) as AdvisorRuleRow[]).map(ruleRowToMock);
 }
 
 export async function getAdvisorRule(id: string): Promise<MockAdvisorRule | null> {
-  if (!mocksEnabled()) return notImplemented('advisor');
-  return findRule(id) ?? null;
+  if (mocksEnabled()) return findRule(id) ?? null;
+
+  const { createAdminClient } = await import('@/lib/supabase/admin');
+  const { requireMembership } = await import('@/lib/auth/current-user');
+  const { orgId } = await requireMembership();
+  const admin = createAdminClient();
+  const { data } = await admin
+    .from('advisor_rules')
+    .select(
+      'id, org_id, name, condition_text, action_text, source, source_id, status, confidence, applied_count, last_applied_at',
+    )
+    .eq('id', id)
+    .eq('org_id', orgId)
+    .maybeSingle();
+  if (!data) return null;
+  return ruleRowToMock(data as AdvisorRuleRow);
 }
 
 // — Audit log ——————————————————————————————————————————————————————————————

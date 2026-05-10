@@ -54,6 +54,7 @@ export async function updateSession(request: NextRequest) {
     pathname.startsWith('/demo') ||
     pathname.startsWith('/try') ||
     pathname.startsWith('/help') ||
+    pathname.startsWith('/widget') ||
     pathname.startsWith('/dev/');
 
   if (!user && !isPublicRoute) {

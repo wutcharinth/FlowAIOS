@@ -29,7 +29,9 @@ const m15MainLinks = [
 const adminLinks = [
   { href: '/admin', label: 'Overview' },
   { href: '/admin/team', label: 'Team' },
-  { href: '/admin/integrations', label: 'Integrations' },
+  { href: '/admin/integrations', label: 'Channels' },
+  { href: '/admin/connectors', label: 'Connectors' },
+  { href: '/admin/web-chat', label: 'Web chat' },
   { href: '/admin/knowledge', label: 'Knowledge' },
   { href: '/admin/products', label: 'Products' },
   { href: '/admin/templates', label: 'Templates' },

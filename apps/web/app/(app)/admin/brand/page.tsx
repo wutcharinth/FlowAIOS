@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation';
 import { requireMembership } from '@/lib/auth/current-user';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { PageGuide } from '@/components/app/page-guide';
 import { BrandVoiceForm } from './brand-form';
 
 export const dynamic = 'force-dynamic';
@@ -26,6 +27,18 @@ export default async function BrandSettingsPage() {
           before every AI reply.
         </p>
       </div>
+
+      <PageGuide
+        title="What is brand voice?"
+        what="Persona settings — voice, formality, signature, forbidden / required phrases, emoji policy — that get prepended to the AI's system prompt for every reply. The AI sounds like your brand, not a generic chatbot."
+        when="Set this once at onboarding. Revisit when the AI starts to drift (a phrase you'd never use sneaks in), or when you launch a new product line that needs different language."
+        how={[
+          'Pick voice + formality + language. These are the base.',
+          'Add 2-4 required phrases (your tone signature) and any forbidden ones (overpromises, jargon).',
+          'Use custom instructions for quirks: "Always offer free shipping mention for orders ≥ ฿800." This is the most powerful field.',
+        ]}
+        helpSlug="brand-voice"
+      />
 
       <Card>
         <CardHeader>

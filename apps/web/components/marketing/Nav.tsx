@@ -64,6 +64,8 @@ const primaryLinks: ReadonlyArray<PrimaryLink> = [
   { href: '/#features', label: { th: 'ฟีเจอร์', en: 'Product' } },
   { href: '/pricing', label: { th: 'ราคา', en: 'Pricing' } },
   { href: '/demo', label: { th: 'เดโม', en: 'Demo' } },
+  { href: '/try', label: { th: 'ทดลองใช้', en: 'Try' } },
+  { href: '/help', label: { th: 'คู่มือ', en: 'Help' } },
 ];
 
 export function Nav() {

@@ -180,7 +180,7 @@ export function Concierge() {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-label={open ? 'Close concierge' : 'Open concierge'}
-        className={`fixed z-30 inline-flex items-center gap-2 rounded-full border border-hairline bg-paper px-4 py-2.5 text-[13px] font-medium text-ink shadow-soft transition-all hover:-translate-y-0.5 hover:border-warm/40 bottom-[max(16px,env(safe-area-inset-bottom))] left-4 sm:bottom-6 sm:left-6 ${
+        className={`fixed z-30 inline-flex items-center gap-2 rounded-full border border-hairline bg-paper px-4 py-2.5 text-[13px] font-medium text-ink shadow-soft transition-all hover:-translate-y-0.5 hover:border-warm/40 bottom-[max(16px,env(safe-area-inset-bottom))] right-4 sm:bottom-6 sm:right-6 ${
           open ? 'translate-y-1 opacity-0 pointer-events-none' : ''
         }`}
       >
@@ -195,7 +195,7 @@ export function Concierge() {
         Panel.
         - Mobile (<640px): full-bleed takeover. inset-0, no border-radius,
           status-bar + home-indicator-aware padding via safe-area-inset.
-        - sm+ (640px+): 380px floating panel anchored bottom-left.
+        - sm+ (640px+): 380px floating panel anchored bottom-right.
         Pattern lifted from JongToh's sales-widget @media(max-width:520px) block.
       */}
       <div
@@ -203,7 +203,7 @@ export function Concierge() {
         aria-modal={open}
         aria-label="FlowAIOS concierge"
         aria-hidden={!open}
-        className={`fixed inset-0 z-40 flex flex-col border-hairline bg-paper transition-all duration-200 ease-out sm:inset-auto sm:bottom-6 sm:left-6 sm:h-[600px] sm:max-h-[calc(100vh-48px)] sm:w-[min(380px,calc(100vw-32px))] sm:rounded-2xl sm:border sm:shadow-terminal ${
+        className={`fixed inset-0 z-40 flex flex-col border-hairline bg-paper transition-all duration-200 ease-out sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[600px] sm:max-h-[calc(100vh-48px)] sm:w-[min(380px,calc(100vw-32px))] sm:rounded-2xl sm:border sm:shadow-terminal ${
           open ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-3 opacity-0'
         }`}
       >

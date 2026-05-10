@@ -10,11 +10,19 @@ export default async function LoginPage({
   const search = await searchParams;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6">
+    <main className="relative flex min-h-screen flex-col items-center justify-center p-6">
+      <Link
+        href="/"
+        className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-md border border-hairline bg-paper px-3 py-1.5 text-[13px] text-ink-2 transition-colors hover:border-warm/40 hover:text-ink sm:left-6 sm:top-6"
+        aria-label="Back to FlowAIOS home"
+      >
+        <span aria-hidden>←</span>
+        Back
+      </Link>
+
       <Link
         href="/"
         className="mb-6 inline-flex items-center gap-2 text-[14.5px] font-semibold tracking-[-0.012em] text-ink transition-opacity hover:opacity-80"
-        aria-label="Back to FlowAIOS home"
       >
         <img
           src="/flowaios-logo.png"
@@ -37,6 +45,15 @@ export default async function LoginPage({
             No account?{' '}
             <Link href="/signup" className="font-medium text-primary hover:underline">
               Create one
+            </Link>
+          </p>
+          <p className="mt-3 text-center text-xs text-muted-foreground">
+            Just looking?{' '}
+            <Link
+              href="/try"
+              className="font-medium text-warm hover:underline"
+            >
+              Try the merchant demo →
             </Link>
           </p>
         </CardContent>

@@ -52,6 +52,8 @@ export async function updateSession(request: NextRequest) {
     pathname.startsWith('/pricing') ||
     pathname.startsWith('/for/') ||
     pathname.startsWith('/demo') ||
+    pathname.startsWith('/try') ||
+    pathname.startsWith('/help') ||
     pathname.startsWith('/dev/');
 
   if (!user && !isPublicRoute) {

@@ -190,6 +190,17 @@
     letter-spacing: -0.035em;
     line-height: 1.02;
   }
+  /*
+   * EN headlines have higher character counts than the equivalent Thai. At
+   * the 76px display-xl ceiling the hero EN copy wraps to too many lines and
+   * loses balance against the right-column visual. Scale down only on EN —
+   * Thai stays at the default size since the script already runs ~30 % more
+   * compact glyph-for-glyph.
+   */
+  html[lang="en"] .display-xl {
+    font-size: clamp(36px, 4.4vw, 60px);
+    letter-spacing: -0.028em;
+  }
   .display-lg {
     font-family: var(--font-display), var(--font-sans);
     font-size: clamp(32px, 3.6vw, 52px);

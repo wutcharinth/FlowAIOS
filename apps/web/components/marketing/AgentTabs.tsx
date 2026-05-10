@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { agents, type AgentKey } from '@/lib/marketing/data';
+import { T } from './lang-text';
 
 export function AgentTabs() {
   const [active, setActive] = useState<AgentKey>('service');
@@ -14,14 +15,28 @@ export function AgentTabs() {
           <div>
             <span className="label-mono mb-4 inline-block text-warm">AI Agent Team</span>
             <h2 className="display-md text-ink">
-              ขับเคลื่อนด้วย <span className="text-warm">3 AI Agents</span>
-              <br />
-              ที่เข้าใจหน้าบ้านและหลังบ้าน
+              <span className="th-only">
+                ขับเคลื่อนด้วย <span className="text-warm">3 AI Agents</span>
+                <br />
+                ที่เข้าใจหน้าบ้านและหลังบ้าน
+              </span>
+              <span className="en-only">
+                Powered by <span className="text-warm">3 AI Agents</span>
+                <br />
+                that understand front-of-house and back-office.
+              </span>
             </h2>
           </div>
           <p className="lead">
-            ไม่ต้องสร้าง agent เยอะจนซับซ้อน FlowAIOS วาง agent เป็น 3 บทบาทหลักที่ธุรกิจเข้าใจง่าย:
-            ดูแลลูกค้า ทำงานหลังบ้าน และช่วยสร้างรายได้จากบทสนทนา
+            <span className="th-only">
+              ไม่ต้องสร้าง agent เยอะจนซับซ้อน FlowAIOS วาง agent เป็น 3 บทบาทหลักที่ธุรกิจเข้าใจง่าย:
+              ดูแลลูกค้า ทำงานหลังบ้าน และช่วยสร้างรายได้จากบทสนทนา
+            </span>
+            <span className="en-only">
+              No sprawling agent network. FlowAIOS keeps it to 3 roles a business
+              actually understands: customer care, back-office work, and revenue
+              from conversation.
+            </span>
           </p>
         </div>
 
@@ -58,7 +73,7 @@ export function AgentTabs() {
                     {a.title}
                   </strong>
                   <span className="mt-1 block text-[13px] leading-snug text-ink-2">
-                    {a.shortLabel}
+                    <T value={a.shortLabel} />
                   </span>
                   {selected && (
                     <span className="absolute inset-x-6 -bottom-px h-0.5 rounded bg-warm sm:inset-x-7" />
@@ -75,7 +90,9 @@ export function AgentTabs() {
                 <strong className="text-[20px] font-semibold tracking-tight">
                   {current.title}
                 </strong>
-                <p className="mt-1 text-[13px] text-mute">{current.subtitle}</p>
+                <p className="mt-1 text-[13px] text-mute">
+                  <T value={current.subtitle} />
+                </p>
               </div>
               <span className="rounded-full border border-warm/30 bg-warm-soft px-3 py-1 font-mono text-[10.5px] uppercase tracking-[0.18em] text-warm">
                 {current.state}
@@ -85,10 +102,10 @@ export function AgentTabs() {
             <div className="grid gap-10 md:grid-cols-[1.4fr_1fr]">
               <div>
                 <h3 className="display-md !text-[24px] !font-semibold tracking-tight">
-                  {current.heading}
+                  <T value={current.heading} />
                 </h3>
                 <p className="mt-4 text-[15px] leading-relaxed text-ink-2">
-                  {current.description}
+                  <T value={current.description} />
                 </p>
                 <div className="mt-8 grid grid-cols-1 gap-3.5 sm:grid-cols-2">
                   {current.capabilities.map(([name, body]) => (
@@ -100,7 +117,7 @@ export function AgentTabs() {
                         {name}
                       </strong>
                       <span className="block text-[12.5px] leading-snug text-ink-2">
-                        {body}
+                        <T value={body} />
                       </span>
                     </div>
                   ))}
@@ -110,14 +127,14 @@ export function AgentTabs() {
               <aside className="flex flex-col gap-3.5">
                 {current.mini.map(([name, body]) => (
                   <div
-                    key={name}
+                    key={name.en}
                     className="rounded-xl border-l-2 border-l-warm bg-paper-2 px-4 py-3.5"
                   >
                     <strong className="block font-mono text-[10.5px] uppercase tracking-[0.16em] text-warm">
-                      {name}
+                      <T value={name} />
                     </strong>
                     <span className="mt-1.5 block text-[13px] leading-relaxed text-ink-2">
-                      {body}
+                      <T value={body} />
                     </span>
                   </div>
                 ))}

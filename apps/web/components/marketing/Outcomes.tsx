@@ -1,4 +1,5 @@
 import { outcomes } from '@/lib/marketing/data';
+import { T } from './lang-text';
 
 export function Outcomes() {
   return (
@@ -8,20 +9,27 @@ export function Outcomes() {
           <div className="mb-10 max-w-3xl">
             <span className="label-mono mb-4 inline-block text-warm">Business Outcomes</span>
             <h2 className="display-md text-ink">
-              ให้ทุกแชทกลายเป็นข้อมูล ทุกข้อมูลกลายเป็น action
-              <br />
-              และทุก action ทำให้ระบบฉลาดขึ้น
+              <span className="th-only">
+                ให้ทุกแชทกลายเป็นข้อมูล ทุกข้อมูลกลายเป็น action
+                <br />
+                และทุก action ทำให้ระบบฉลาดขึ้น
+              </span>
+              <span className="en-only">
+                Every chat becomes data, every data point an action,
+                <br />
+                and every action makes the system smarter.
+              </span>
             </h2>
           </div>
 
           <div className="grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline md:grid-cols-2 lg:grid-cols-4">
             {outcomes.map((o) => (
-              <article key={o.title} className="bg-paper px-7 py-7">
+              <article key={o.title.en} className="bg-paper px-7 py-7">
                 <strong className="block text-[26px] font-semibold tracking-tight text-warm">
-                  {o.title}
+                  <T value={o.title} />
                 </strong>
                 <span className="mt-2.5 block text-[13.5px] leading-relaxed text-ink-2">
-                  {o.body}
+                  <T value={o.body} />
                 </span>
               </article>
             ))}

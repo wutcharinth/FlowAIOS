@@ -15,27 +15,43 @@ export function Cta() {
           FlowAIOS
         </span>
         <h2 className="mt-5 display-lg text-paper">
-          เริ่มสร้าง AI OS สำหรับ Customer Operations
-          <br />
-          ของธุรกิจคุณ
+          <span className="th-only">
+            เริ่มสร้าง AI OS สำหรับ Customer Operations
+            <br />
+            ของธุรกิจคุณ
+          </span>
+          <span className="en-only">
+            Start building the AI OS for your
+            <br />
+            customer operations
+          </span>
         </h2>
         <p className="mx-auto mt-7 max-w-2xl text-[16px] leading-relaxed text-paper/80">
-          รวมแชทจาก LINE OA, TikTok Shop, Shopee, Lazada, Facebook, Instagram
-          และช่องทางอื่น พร้อม AI Agents ที่ช่วยตอบ จำ ทำงาน แนะนำการตั้งค่า
-          และเรียนรู้จากการใช้งานจริง
+          <span className="th-only">
+            รวมแชทจาก LINE OA, TikTok Shop, Shopee, Lazada, Facebook, Instagram
+            และช่องทางอื่น พร้อม AI Agents ที่ช่วยตอบ จำ ทำงาน แนะนำการตั้งค่า
+            และเรียนรู้จากการใช้งานจริง
+          </span>
+          <span className="en-only">
+            One inbox for LINE OA, TikTok Shop, Shopee, Lazada, Facebook, Instagram,
+            and more — plus AI agents that reply, remember, get work done, suggest
+            configuration, and learn from real use.
+          </span>
         </p>
         <div className="mt-9 flex items-center justify-center gap-4">
           <Link
             href="/signup"
             className="rounded-lg bg-warm px-6 py-3.5 text-[14px] font-medium text-paper transition-all duration-200 hover:-translate-y-px hover:bg-warm-2 hover:shadow-cta"
           >
-            ขอดูเดโม FlowAIOS
+            <span className="th-only">ขอดูเดโม FlowAIOS</span>
+            <span className="en-only">Get a FlowAIOS demo</span>
           </Link>
           <Link
             href="#top"
             className="group inline-flex items-center gap-1.5 px-3 py-3.5 text-[14px] text-paper transition-colors hover:text-warm"
           >
-            กลับไปดูหน้าแรก
+            <span className="th-only">กลับไปดูหน้าแรก</span>
+            <span className="en-only">Back to top</span>
             <span className="transition-transform duration-200 group-hover:translate-x-1">
               →
             </span>

@@ -1,4 +1,5 @@
 import { autopilotModes } from '@/lib/marketing/data';
+import { T } from './lang-text';
 
 export function AutopilotModes() {
   return (
@@ -8,15 +9,29 @@ export function AutopilotModes() {
           <div>
             <span className="label-mono mb-4 inline-block text-warm">Controlled Autopilot</span>
             <h2 className="display-md text-ink">
-              Auto Reply ได้ แต่ควบคุมได้ตามความเสี่ยง
-              <br />
-              ของแต่ละเคส
+              <span className="th-only">
+                Auto Reply ได้ แต่ควบคุมได้ตามความเสี่ยง
+                <br />
+                ของแต่ละเคส
+              </span>
+              <span className="en-only">
+                Auto-replies, with risk-based control
+                <br />
+                on every case
+              </span>
             </h2>
           </div>
           <p className="lead">
-            FlowAIOS ไม่ได้ปล่อยให้ AI ตอบทุกอย่างแบบเสี่ยง ๆ
-            แต่ให้ธุรกิจกำหนดระดับ automation ได้ ตั้งแต่ตอบอัตโนมัติ
-            ร่างคำตอบรออนุมัติ ไปจนถึงส่งต่อให้คนดูแลทันที
+            <span className="th-only">
+              FlowAIOS ไม่ได้ปล่อยให้ AI ตอบทุกอย่างแบบเสี่ยง ๆ
+              แต่ให้ธุรกิจกำหนดระดับ automation ได้ ตั้งแต่ตอบอัตโนมัติ
+              ร่างคำตอบรออนุมัติ ไปจนถึงส่งต่อให้คนดูแลทันที
+            </span>
+            <span className="en-only">
+              FlowAIOS doesn’t let AI answer everything blindly. You set the
+              automation level — from auto-reply, to approval drafts, to instant
+              hand-off to a human.
+            </span>
           </p>
         </div>
 
@@ -42,14 +57,16 @@ export function AutopilotModes() {
                   {m.label}
                 </span>
               </h3>
-              <p className="mt-3 text-[14.5px] leading-relaxed text-ink-2">{m.body}</p>
+              <p className="mt-3 text-[14.5px] leading-relaxed text-ink-2">
+                <T value={m.body} />
+              </p>
               <ul className="mt-5 space-y-1.5">
                 {m.bullets.map((b) => (
                   <li
-                    key={b}
+                    key={b.en}
                     className="relative pl-4 text-[13.5px] text-ink-2 before:absolute before:left-0 before:top-2.5 before:h-px before:w-2 before:bg-warm"
                   >
-                    {b}
+                    <T value={b} />
                   </li>
                 ))}
               </ul>

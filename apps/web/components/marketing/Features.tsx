@@ -1,4 +1,5 @@
 import { features } from '@/lib/marketing/data';
+import { T } from './lang-text';
 
 export function Features() {
   return (
@@ -8,14 +9,27 @@ export function Features() {
           <div>
             <span className="label-mono mb-4 inline-block text-warm">Product Capabilities</span>
             <h2 className="display-md text-ink">
-              ฟีเจอร์หลักที่ทำให้ FlowAIOS
-              <br />
-              เป็นมากกว่าระบบแชท
+              <span className="th-only">
+                ฟีเจอร์หลักที่ทำให้ FlowAIOS
+                <br />
+                เป็นมากกว่าระบบแชท
+              </span>
+              <span className="en-only">
+                The core features that make FlowAIOS
+                <br />
+                more than a chat tool
+              </span>
             </h2>
           </div>
           <p className="lead">
-            ครอบคลุมทั้งงานตอบลูกค้า งานหลังบ้าน งานขาย และการปรับปรุงระบบ
-            automation เพื่อให้ทีม customer operations ทำงานได้เร็วขึ้นและสม่ำเสมอขึ้น
+            <span className="th-only">
+              ครอบคลุมทั้งงานตอบลูกค้า งานหลังบ้าน งานขาย และการปรับปรุงระบบ
+              automation เพื่อให้ทีม customer operations ทำงานได้เร็วขึ้นและสม่ำเสมอขึ้น
+            </span>
+            <span className="en-only">
+              Covers customer replies, back-office work, sales, and automation
+              tuning — so customer-ops teams move faster and stay consistent.
+            </span>
           </p>
         </div>
 
@@ -24,9 +38,11 @@ export function Features() {
             <article key={f.n} className="bg-paper px-7 py-9">
               <div className="font-mono text-[13px] tracking-widest text-warm">{f.n}</div>
               <h3 className="mt-5 text-[20px] font-semibold tracking-tight text-ink">
-                {f.title}
+                <T value={f.title} />
               </h3>
-              <p className="mt-2.5 text-[14px] leading-relaxed text-ink-2">{f.body}</p>
+              <p className="mt-2.5 text-[14px] leading-relaxed text-ink-2">
+                <T value={f.body} />
+              </p>
             </article>
           ))}
         </div>

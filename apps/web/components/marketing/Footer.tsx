@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { navLinks } from '@/lib/marketing/data';
+import { T } from './lang-text';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -18,7 +19,8 @@ export function Footer() {
           <div className="text-[13px] text-mute">
             <b className="font-medium text-ink">FlowAIOS</b>
             <span className="mx-2 text-hairline-2">·</span>
-            AI OS for Customer Operations
+            <span className="th-only">AI OS สำหรับ Customer Operations</span>
+            <span className="en-only">AI OS for Customer Operations</span>
           </div>
         </div>
 
@@ -29,11 +31,12 @@ export function Footer() {
               href={href}
               className="text-ink-2 transition-colors hover:text-warm"
             >
-              {label}
+              <T value={label} />
             </Link>
           ))}
           <Link href="/login" className="text-ink-2 transition-colors hover:text-warm">
-            เข้าสู่ระบบ
+            <span className="th-only">เข้าสู่ระบบ</span>
+            <span className="en-only">Sign in</span>
           </Link>
         </nav>
 

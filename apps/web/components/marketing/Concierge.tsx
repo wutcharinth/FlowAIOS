@@ -32,6 +32,12 @@ function looksThai(s: string): boolean {
 export function Concierge() {
   const [open, setOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
+  /**
+   * Reflects body[data-drawer-open]. The marketing Nav sets this when the
+   * mobile hamburger is open; we hide the concierge bubble while it is so
+   * it doesn't cover the lang toggle / nav links.
+   */
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [mode, setMode] = useState<Mode>('chat');
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -44,6 +50,16 @@ export function Concierge() {
 
   useEffect(() => {
     setHydrated(true);
+  }, []);
+
+  // Watch body[data-drawer-open] so the bubble can step out of the way
+  // while the mobile nav drawer is open.
+  useEffect(() => {
+    const sync = () => setDrawerOpen(document.body.dataset.drawerOpen === 'true');
+    sync();
+    const observer = new MutationObserver(sync);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['data-drawer-open'] });
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -209,7 +225,7 @@ export function Concierge() {
         aria-expanded={open}
         aria-label={open ? 'Close concierge' : 'Open concierge'}
         className={`fixed z-30 inline-flex items-center gap-2 rounded-full border border-hairline bg-paper px-4 py-2.5 text-[13px] font-medium text-ink shadow-soft transition-all hover:-translate-y-0.5 hover:border-warm/40 bottom-[max(16px,env(safe-area-inset-bottom))] right-4 sm:bottom-6 sm:right-6 ${
-          open ? 'translate-y-1 opacity-0 pointer-events-none' : ''
+          open || drawerOpen ? 'translate-y-1 opacity-0 pointer-events-none' : ''
         }`}
       >
         <span className="relative flex h-2 w-2">

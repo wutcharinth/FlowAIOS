@@ -86,8 +86,12 @@ export function Nav() {
     if (drawerOpen) {
       const prev = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
+      // Signal to fixed-position widgets (Concierge) that they should
+      // step out of the way while the drawer is open.
+      document.body.dataset.drawerOpen = 'true';
       return () => {
         document.body.style.overflow = prev;
+        delete document.body.dataset.drawerOpen;
       };
     }
   }, [drawerOpen]);
@@ -223,9 +227,10 @@ export function Nav() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
-          <div className="hidden md:block">
-            <LangToggle />
-          </div>
+          {/* Always visible — was hidden on mobile, but the lang toggle
+              was the most-asked-for control behind the hamburger so it
+              now lives in the topbar at every breakpoint. */}
+          <LangToggle />
           <Link
             href="/login"
             className={`hidden px-2 py-2 text-[13.5px] transition-colors hover:text-ink md:inline ${
@@ -265,6 +270,16 @@ export function Nav() {
         }`}
       >
         <nav className="mx-auto flex w-[min(1240px,calc(100%-32px))] flex-col gap-1 py-3 text-[15px]">
+          {/* Lang toggle pinned to the top of the drawer — was previously
+              at the bottom where it competed with the fixed concierge
+              bubble for tap area. */}
+          <div className="mb-2 flex items-center justify-between rounded-md border border-hairline bg-paper-2 px-3 py-2">
+            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-mute">
+              Language
+            </span>
+            <LangToggle />
+          </div>
+
           {primaryLinks.map(({ href, label }) => (
             <Link
               key={href}
@@ -331,13 +346,6 @@ export function Nav() {
             </span>
             <span aria-hidden className="text-[14px] text-mute">→</span>
           </Link>
-
-          <div className="mt-3 flex items-center justify-between border-t border-hairline pt-3">
-            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-mute">
-              Language
-            </span>
-            <LangToggle />
-          </div>
         </nav>
       </div>
     </header>

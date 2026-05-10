@@ -208,141 +208,115 @@ function ConnectLineSteps({ lang }: { lang: 'th' | 'en' }) {
   );
 }
 
-/* ---------- Figure 3: Memory lifecycle state machine ---------- */
+/* ---------- Figure 3: Memory lifecycle (3-outcome flow) ---------- */
 
 function MemoryLifecycle({ lang }: { lang: 'th' | 'en' }) {
   const labels =
     lang === 'th'
       ? {
-          extracted: 'extracted',
-          active: 'Active',
-          activeSub: 'AI ใช้',
-          merged: 'Merged',
-          mergedSub: 'duplicate',
-          contradicted: 'Contradicted',
-          contradictedSub: 'newer wins',
-          archived: 'Archived',
-          archivedSub: 'unused 60d',
-          lesson: 'Org-wide lesson',
-          lessonSub: '≥ 4 customers',
-          tBoosted: 'used → score↑',
-          tDup: 'cosine ≥ 0.92',
-          tConflict: 'AI judges conflict',
-          tStale: 'no use 60d + low conf',
-          tPromote: 'pattern across customers',
+          chat: 'ลูกค้าคุย',
+          saved: 'AI จำสิ่งสำคัญไว้',
+          savedSub: 'เช่น “แพ้ paraben”',
+          o1: 'ใช้ตอบลูกค้าครั้งหน้า',
+          o1Sub: 'จำชอบ จำไม่ชอบ จำประวัติ',
+          o2: 'กลายเป็นบทเรียนของทีม',
+          o2Sub: 'เมื่อหลายลูกค้าพูดเรื่องเดียวกัน',
+          o3: 'ลืมไปเองเมื่อเก่า',
+          o3Sub: 'ถ้าไม่ใช้แล้ว หรือลูกค้าเปลี่ยนใจ',
         }
       : {
-          extracted: 'extracted',
-          active: 'Active',
-          activeSub: 'AI uses it',
-          merged: 'Merged',
-          mergedSub: 'duplicate',
-          contradicted: 'Contradicted',
-          contradictedSub: 'newer wins',
-          archived: 'Archived',
-          archivedSub: 'unused 60 d',
-          lesson: 'Org-wide lesson',
-          lessonSub: '≥ 4 customers',
-          tBoosted: 'cited → score boost',
-          tDup: 'cosine ≥ 0.92',
-          tConflict: 'AI judges conflict',
-          tStale: 'no use 60 d + low conf',
-          tPromote: 'same fact ≥ 4 customers',
+          chat: 'Customer chats',
+          saved: 'AI saves a useful fact',
+          savedSub: 'e.g. “allergic to paraben”',
+          o1: 'Used to personalize next time',
+          o1Sub: 'preferences, history, tone',
+          o2: 'Becomes a team-wide lesson',
+          o2Sub: 'when many customers share it',
+          o3: 'Forgotten over time',
+          o3Sub: 'if unused, or customer changes',
         };
 
-  const Node = ({
+  const Card = ({
     x, y, w, h, color, title, sub, animateOn,
   }: {
     x: number; y: number; w: number; h: number;
-    color: 'mint' | 'warm' | 'rose' | 'mute' | 'ink';
+    color: 'mint' | 'warm' | 'ink' | 'mute' | 'paper';
     title: string; sub: string; animateOn?: boolean;
   }) => {
     const fill = {
       mint: 'hsl(var(--mint-soft))',
       warm: 'hsl(var(--warm-soft))',
-      rose: '#FFF1F2',
-      mute: 'hsl(var(--paper-2))',
       ink: '#EEF2FF',
+      mute: 'hsl(var(--paper-2))',
+      paper: 'hsl(var(--paper))',
     }[color];
     const stroke = {
       mint: 'hsl(var(--mint))',
       warm: 'hsl(var(--warm))',
-      rose: '#BE123C',
-      mute: 'hsl(var(--mute))',
       ink: '#4338CA',
+      mute: 'hsl(var(--mute))',
+      paper: 'hsl(var(--hairline))',
     }[color];
-    const text = stroke;
+    const titleColor = color === 'mute' || color === 'paper' ? 'hsl(var(--ink))' : stroke;
     return (
       <g transform={`translate(${x},${y})`} className={animateOn ? 'help-fig-pulse' : ''}>
-        <rect width={w} height={h} rx="10" fill={fill} stroke={stroke} strokeOpacity="0.32" />
-        <text x={w / 2} y={h / 2 - 2} textAnchor="middle" fill={text} style={{ fontSize: 12, fontWeight: 600 }}>
+        <rect width={w} height={h} rx="10" fill={fill} stroke={stroke} strokeOpacity="0.35" />
+        <text x={w / 2} y={h / 2 - 4} textAnchor="middle" fill={titleColor} style={{ fontSize: 12.5, fontWeight: 600 }}>
           {title}
         </text>
-        <text x={w / 2} y={h / 2 + 14} textAnchor="middle" className="fill-mute" style={{ fontSize: 10, fontFamily: 'ui-monospace, monospace' }}>
+        <text x={w / 2} y={h / 2 + 14} textAnchor="middle" className="fill-mute" style={{ fontSize: 10.5 }}>
           {sub}
         </text>
       </g>
     );
   };
 
-  const Arrow = ({
-    from, to, label, color = 'hsl(var(--ink-2))',
-  }: {
-    from: [number, number];
-    to: [number, number];
-    label: string;
-    color?: string;
-  }) => {
-    const midX = (from[0] + to[0]) / 2;
-    const midY = (from[1] + to[1]) / 2;
-    return (
-      <>
-        <line x1={from[0]} y1={from[1]} x2={to[0]} y2={to[1]} stroke={color} strokeWidth="1.4" strokeDasharray="3 3" />
-        <text x={midX} y={midY - 4} textAnchor="middle" className="fill-mute" style={{ fontSize: 9, fontFamily: 'ui-monospace, monospace' }}>
-          {label}
-        </text>
-      </>
-    );
-  };
+  // Layout: 3 columns. Col 1 = chat, Col 2 = saved (highlighted),
+  // Col 3 = stack of 3 outcome cards. Lines fan from the right edge of
+  // the saved card (300, 110) to the left edge of each outcome card.
+  const savedRight: [number, number] = [300, 110];
 
   return (
     <FigureFrame
-      caption="memory ทุกแถวอยู่ใน 1 ใน 5 สถานะ · เปลี่ยนสถานะอัตโนมัติทุกคืน"
-      captionEn="Every memory row sits in one of 5 states · transitions run nightly"
+      caption="ลูกค้าคุย → AI จำ → 3 เส้นทาง: ใช้ต่อ, กลายเป็นบทเรียน, หรือลืมไปเอง"
+      captionEn="Chat → AI saves a fact → one of three paths: reused, promoted, or forgotten"
       lang={lang}
     >
-      <svg role="img" aria-label="memory lifecycle" viewBox="0 0 640 320" className="h-auto w-full">
-        {/* Source */}
-        <g transform="translate(20, 140)">
-          <rect width="100" height="40" rx="10" fill="hsl(var(--paper-2))" stroke="hsl(var(--hairline))" />
-          <text x="50" y="25" textAnchor="middle" className="fill-ink-2" style={{ fontSize: 12 }}>
-            {labels.extracted}
-          </text>
-        </g>
+      <svg role="img" aria-label="memory lifecycle" viewBox="0 0 640 240" className="h-auto w-full">
+        {/* Col 1 — Customer chat */}
+        <Card x={20} y={90} w={120} h={50} color="paper" title={labels.chat} sub="" />
 
-        {/* Active (centre) */}
-        <Node x={170} y={140} w={130} h={48} color="mint" title={labels.active} sub={labels.activeSub} animateOn />
+        {/* Col 1 → Col 2 arrow */}
+        <line
+          x1="140" y1="115" x2="180" y2="115"
+          stroke="hsl(var(--warm))" strokeWidth="2" strokeDasharray="3 3"
+          className="help-fig-arrow"
+        />
 
-        {/* Merged (top) */}
-        <Node x={350} y={20}  w={130} h={48} color="mute"  title={labels.merged}       sub={labels.mergedSub} />
-        {/* Contradicted (mid-right) */}
-        <Node x={350} y={140} w={130} h={48} color="rose"  title={labels.contradicted} sub={labels.contradictedSub} />
-        {/* Archived (bottom) */}
-        <Node x={350} y={260} w={130} h={48} color="warm"  title={labels.archived}     sub={labels.archivedSub} />
-        {/* Lesson (far right) */}
-        <Node x={510} y={140} w={120} h={48} color="ink"   title={labels.lesson}       sub={labels.lessonSub} />
+        {/* Col 2 — Saved (highlighted, mint) */}
+        <Card x={180} y={80} w={120} h={70} color="mint" title={labels.saved} sub={labels.savedSub} animateOn />
 
-        {/* Source → Active */}
-        <line x1="120" y1="160" x2="170" y2="164" stroke="hsl(var(--warm))" strokeWidth="2" strokeDasharray="3 3" className="help-fig-arrow" />
+        {/* Three branching lines from saved → outcomes */}
+        {/* Top: outcome 1 — Used to personalize */}
+        <path
+          d={`M ${savedRight[0]} ${savedRight[1]} C 360 110, 380 30, 440 30`}
+          fill="none" stroke="hsl(var(--mint))" strokeWidth="1.5" strokeDasharray="3 3"
+        />
+        {/* Middle: outcome 2 — Team lesson */}
+        <line
+          x1={savedRight[0]} y1="115" x2="440" y2="115"
+          stroke="#4338CA" strokeWidth="1.5" strokeDasharray="3 3"
+        />
+        {/* Bottom: outcome 3 — Forgotten */}
+        <path
+          d={`M ${savedRight[0]} ${savedRight[1]} C 360 110, 380 200, 440 200`}
+          fill="none" stroke="hsl(var(--mute))" strokeWidth="1.5" strokeDasharray="3 3"
+        />
 
-        {/* Active → Merged */}
-        <Arrow from={[260, 140]} to={[400, 70]}  label={labels.tDup} />
-        {/* Active → Contradicted */}
-        <Arrow from={[300, 164]} to={[350, 164]} label={labels.tConflict} />
-        {/* Active → Archived */}
-        <Arrow from={[260, 188]} to={[400, 260]} label={labels.tStale} />
-        {/* Active → Lesson (promote) */}
-        <Arrow from={[300, 152]} to={[510, 156]} label={labels.tPromote} color="hsl(var(--mint))" />
+        {/* Col 3 — three stacked outcome cards */}
+        <Card x={440} y={5}   w={180} h={50} color="mint" title={labels.o1} sub={labels.o1Sub} />
+        <Card x={440} y={90}  w={180} h={50} color="ink"  title={labels.o2} sub={labels.o2Sub} />
+        <Card x={440} y={175} w={180} h={50} color="mute" title={labels.o3} sub={labels.o3Sub} />
       </svg>
     </FigureFrame>
   );

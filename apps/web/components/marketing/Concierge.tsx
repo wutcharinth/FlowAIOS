@@ -113,17 +113,23 @@ function isLang(v: unknown): v is Lang {
   return v === 'th' || v === 'en';
 }
 
+function readLangCookie(): Lang {
+  if (typeof document === 'undefined') return 'th';
+  const m = document.cookie.match(/(?:^|; )flowaios-lang=([^;]*)/);
+  return isLang(m?.[1]) ? (m[1] as Lang) : 'th';
+}
+
 /**
- * Reactively reads document.documentElement.lang. Updated by the marketing
- * LangToggle without a page reload — we observe the attribute mutation so
- * the concierge greeting/starters/UI swap immediately.
+ * Reactively reads document.documentElement.lang. Initial value reads the
+ * cookie eagerly so the first paint isn't always 'th' (avoids a flash for
+ * EN visitors). Then a MutationObserver watches for live toggles.
  */
 function useLang(): Lang {
-  const [lang, setLang] = useState<Lang>('th');
+  const [lang, setLang] = useState<Lang>(readLangCookie);
   useEffect(() => {
     const sync = () => {
       const v = document.documentElement.lang;
-      setLang(isLang(v) ? v : 'th');
+      setLang(isLang(v) ? v : readLangCookie());
     };
     sync();
     const observer = new MutationObserver(sync);
@@ -167,6 +173,22 @@ export function Concierge() {
     observer.observe(document.body, { attributes: true, attributeFilter: ['data-drawer-open'] });
     return () => observer.disconnect();
   }, []);
+
+  // If only the greeting is on screen (no real conversation yet) and the
+  // visitor flips the lang toggle, swap the greeting to match. Once the
+  // visitor has actually chatted (messages.length > 1), we leave history
+  // alone to avoid rewriting their replies.
+  useEffect(() => {
+    setMessages((m) => {
+      if (m.length !== 1) return m;
+      const only = m[0];
+      if (!only || only.direction !== 'out' || only.pending || only.createdAt) return m;
+      if (only.body === GREETING.th || only.body === GREETING.en) {
+        return [{ direction: 'out', body: GREETING[lang] }];
+      }
+      return m;
+    });
+  }, [lang]);
 
   useEffect(() => {
     if (open && messages.length === 0) {

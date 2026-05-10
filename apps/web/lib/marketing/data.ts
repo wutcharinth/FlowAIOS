@@ -58,8 +58,8 @@ export const heroThreads: ReadonlyArray<HeroThread> = [
 // ── Hero promises ────────────────────────────────────────────────────────────
 export const heroPromises = [
   'Auto-Reply แบบควบคุมได้',
+  'Self-improving Memory',
   'AI-managed Backoffice',
-  'Customer Memory',
   'Marketplace Workflows',
 ] as const;
 
@@ -83,7 +83,7 @@ export const principles = [
   {
     n: '04',
     title: 'Learn',
-    body: 'เรียนรู้จากคำตอบที่ทีมแก้ไข เคสที่ถูก escalate และ lesson ที่ manager อนุมัติ',
+    body: 'เรียนรู้จากคำตอบที่ทีมแก้ไข เคสที่ถูก escalate และ lesson ที่ manager อนุมัติ — memory ที่ใช้บ่อย confidence จะสูงขึ้น ที่ขัดแย้งจะถูก supersede อัตโนมัติ',
   },
 ] as const;
 
@@ -283,6 +283,25 @@ export const lessonItems = [
   'ถ้าลูกค้าบ่นซ้ำเกิน 2 ครั้ง ให้ escalate ให้หัวหน้าทีม',
 ] as const;
 
+// Memory lifecycle — what we keep, what we forget, what we promote.
+export const memoryLifecycleItems = [
+  'จดเฉพาะข้อมูลที่ confidence ≥ 0.5 — ที่เหลือไม่เก็บ',
+  'memory ที่ใช้บ่อย score สูงขึ้น เด้งขึ้นมาก่อนเสมอ',
+  'ข้อมูลใหม่ขัดกับเก่า → AI judge แล้ว supersede อัตโนมัติ',
+  'รายการเกือบเหมือนกัน (cosine ≥ 0.92) ถูก dedup เป็น merged',
+  'ไม่ถูกใช้ 60 วัน + confidence ต่ำ → archived ออกจาก context',
+  'ข้อเท็จจริงที่ซ้ำใน ≥ 4 ลูกค้า → promote เป็น lesson ระดับองค์กร',
+] as const;
+
+// Harness + context engineering — for the trust/observability story.
+export const harnessItems = [
+  'trace_id ทุก reply เพื่อ debug ตั้งแต่ context retrieval ถึงคำตอบ',
+  'fallback อัตโนมัติ Gemini → Claude เมื่อ provider หลักล่ม',
+  'confidence gate: auto / approval / escalate ตาม sentiment + keyword',
+  'history compression: บทสนทนายาว AI สรุป turn เก่าก่อนใช้ context',
+  'ai_logs บันทึก kb_hits, memory_hits, provider, latency ทุกครั้ง',
+] as const;
+
 // ── Features ─────────────────────────────────────────────────────────────────
 export const features = [
   {
@@ -314,6 +333,36 @@ export const features = [
     n: '06',
     title: 'Intelligence Dashboard',
     body: 'มองเห็นคำถามซ้ำ ปัญหาที่เกิดบ่อย sentiment trend เคสที่ควรปรับปรุง และ workflow ที่ควรสร้างเพิ่ม',
+  },
+  {
+    n: '07',
+    title: 'Brand Voice Studio',
+    body: 'ตั้ง voice, formality, signature, forbidden / required phrases และ emoji policy ของแบรนด์ — AI ใช้ทุกคำตอบ',
+  },
+  {
+    n: '08',
+    title: 'Product Catalog',
+    body: 'อัปโหลดสินค้า + รายละเอียด AI สร้าง embedding ให้อัตโนมัติ ใช้ในการตอบลูกค้าและแนะนำสินค้าที่เกี่ยวข้อง',
+  },
+  {
+    n: '09',
+    title: 'Reply Templates',
+    body: 'quick replies สำหรับทีม พร้อม shortcut + ใช้บ่อย AI suggest อัตโนมัติเมื่อตรงกับคำถามลูกค้า',
+  },
+  {
+    n: '10',
+    title: 'Memory Governance',
+    body: 'review memory ที่ AI จด, อนุมัติ pending facts, archive ของเก่า, restore ที่ผิดพลาด — manager คุมได้เต็มที่',
+  },
+  {
+    n: '11',
+    title: 'Multi-Provider Harness',
+    body: 'Gemini หลัก, Claude fallback อัตโนมัติ พร้อม trace_id, confidence gate, structured-output validator — ระบบ AI ระดับ production',
+  },
+  {
+    n: '12',
+    title: 'PDPA Control Plane',
+    body: 'memory mode (auto / approval / manual), retention windows, residency, signed DPA — พร้อม audit log สำหรับ compliance review',
   },
 ] as const;
 

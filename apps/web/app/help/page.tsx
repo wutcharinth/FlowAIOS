@@ -59,9 +59,15 @@ export default async function HelpHomePage() {
       <header className="border-b bg-paper-2/40">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <Link href="/" className="flex items-center gap-2 text-sm font-semibold">
-            <span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-warm to-warm-2 font-mono text-[11px] font-bold text-paper">
-              F
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/flowaios-logo.png"
+              alt=""
+              aria-hidden
+              width={24}
+              height={24}
+              className="h-6 w-6 shrink-0"
+            />
             FlowAIOS
           </Link>
           <div className="flex items-center gap-3 text-[13px]">
